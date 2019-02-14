@@ -30,10 +30,10 @@
 		7751380121ADCA900054D05E /* PeriodKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7751380021ADCA900054D05E /* PeriodKind.swift */; };
 		7751380321ADCB850054D05E /* PeriodKindResponseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7751380221ADCB850054D05E /* PeriodKindResponseAdapter.swift */; };
 		7751380921ADD28C0054D05E /* PeriodKindResponseAdapterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7751380821ADD28C0054D05E /* PeriodKindResponseAdapterTest.swift */; };
-		77FE004A21B9E668009C3CD1 /* OperationFees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE004921B9E668009C3CD1 /* OperationFees.swift */; };
 		77FE004421B899DD009C3CD1 /* GetAddressCodeRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE004321B899DD009C3CD1 /* GetAddressCodeRPC.swift */; };
 		77FE004621B8BCC5009C3CD1 /* ContractCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE004521B8BCC5009C3CD1 /* ContractCode.swift */; };
 		77FE004821B9D07B009C3CD1 /* ContractCodeResponseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE004721B9D07B009C3CD1 /* ContractCodeResponseAdapter.swift */; };
+		77FE004A21B9E668009C3CD1 /* OperationFees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE004921B9E668009C3CD1 /* OperationFees.swift */; };
 		7A1E2ED0217671B20073C080 /* KeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E2ECF217671B20073C080 /* KeyPair.swift */; };
 		7A1E2ED4217673FE0073C080 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E2ED3217673FD0073C080 /* Wallet.swift */; };
 		7A1E2EDC2176B3F40073C080 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E2EDB2176B3F40073C080 /* Operation.swift */; };
@@ -140,10 +140,10 @@
 		7751380021ADCA900054D05E /* PeriodKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodKind.swift; sourceTree = "<group>"; };
 		7751380221ADCB850054D05E /* PeriodKindResponseAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodKindResponseAdapter.swift; sourceTree = "<group>"; };
 		7751380821ADD28C0054D05E /* PeriodKindResponseAdapterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodKindResponseAdapterTest.swift; sourceTree = "<group>"; };
-		77FE004921B9E668009C3CD1 /* OperationFees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationFees.swift; sourceTree = "<group>"; };
 		77FE004321B899DD009C3CD1 /* GetAddressCodeRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAddressCodeRPC.swift; sourceTree = "<group>"; };
 		77FE004521B8BCC5009C3CD1 /* ContractCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractCode.swift; sourceTree = "<group>"; };
 		77FE004721B9D07B009C3CD1 /* ContractCodeResponseAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractCodeResponseAdapter.swift; sourceTree = "<group>"; };
+		77FE004921B9E668009C3CD1 /* OperationFees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationFees.swift; sourceTree = "<group>"; };
 		7A1E2ECF217671B20073C080 /* KeyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPair.swift; sourceTree = "<group>"; };
 		7A1E2ED3217673FD0073C080 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		7A1E2EDB2176B3F40073C080 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
@@ -253,8 +253,8 @@
 			isa = PBXGroup;
 			children = (
 				7ABC854C21813427006DE8FD /* Base58String */,
-				7AA95845217CC9F500865D55 /* Tests */,
-				7AA8F3582160158000C05895 /* Sources */,
+				7AA95845217CC9F500865D55 /* TezosCryptoTests */,
+				7AA8F3582160158000C05895 /* TezosCrypto */,
 				7ABC856221824D58006DE8FD /* TezosKitTests */,
 				7AA8F3572160158000C05895 /* Products */,
 				66DCFF36F3CA345FF65DA166 /* Pods */,
@@ -271,7 +271,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7AA8F3582160158000C05895 /* Sources */ = {
+		7AA8F3582160158000C05895 /* TezosCrypto */ = {
 			isa = PBXGroup;
 			children = (
 				7AA9583C217CBBEA00865D55 /* App */,
@@ -282,7 +282,7 @@
 				7AA95818217CB3BD00865D55 /* RPC */,
 				7AA9583A217CBA4E00865D55 /* Utils */,
 			);
-			path = Sources;
+			path = TezosCrypto;
 			sourceTree = "<group>";
 		};
 		7AA95818217CB3BD00865D55 /* RPC */ = {
@@ -397,11 +397,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		7AA95845217CC9F500865D55 /* Tests */ = {
+		7AA95845217CC9F500865D55 /* TezosCryptoTests */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Tests;
+			name = TezosCryptoTests;
 			sourceTree = "<group>";
 		};
 		7ABC854C21813427006DE8FD /* Base58String */ = {
@@ -527,7 +527,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7AA8F3512160158000C05895 /* Build configuration list for PBXProject "TezosKit" */;
+			buildConfigurationList = 7AA8F3512160158000C05895 /* Build configuration list for PBXProject "TezosCrypto" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -977,7 +977,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7AA8F3512160158000C05895 /* Build configuration list for PBXProject "TezosKit" */ = {
+		7AA8F3512160158000C05895 /* Build configuration list for PBXProject "TezosCrypto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7AA8F3662160158100C05895 /* Debug */,
