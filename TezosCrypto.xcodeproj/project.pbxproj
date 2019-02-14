@@ -13,10 +13,10 @@
 		770DFC492214F05500E8E70A /* OperationSigningResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC854A217EA4AE006DE8FD /* OperationSigningResult.swift */; };
 		770DFC4A2214F05500E8E70A /* KeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E2ECF217671B20073C080 /* KeyPair.swift */; };
 		770DFC4D2214F13F00E8E70A /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC4C2214F13F00E8E70A /* Sodium.framework */; };
-		770DFC4F2214F16E00E8E70A /* Base58String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC854D2181348D006DE8FD /* Base58String.swift */; };
 		770DFC512214F29C00E8E70A /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC502214F29C00E8E70A /* BigInt.framework */; };
 		770DFC532214F65E00E8E70A /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC522214F65E00E8E70A /* CryptoSwift.framework */; };
 		770DFC562214F75B00E8E70A /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC552214F75B00E8E70A /* SipHash.framework */; };
+		770DFC582214FE5000E8E70A /* Base58Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC572214FE5000E8E70A /* Base58Swift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,10 +40,10 @@
 		770DFC522214F65E00E8E70A /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		770DFC542214F6DB00E8E70A /* TezosCryptoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TezosCryptoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		770DFC552214F75B00E8E70A /* SipHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SipHash.framework; path = Carthage/Build/iOS/SipHash.framework; sourceTree = "<group>"; };
+		770DFC572214FE5000E8E70A /* Base58Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base58Swift.framework; path = Carthage/Build/iOS/Base58Swift.framework; sourceTree = "<group>"; };
 		7A1E2ECF217671B20073C080 /* KeyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPair.swift; sourceTree = "<group>"; };
 		7AA9582A217CB6F700865D55 /* Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		7ABC854A217EA4AE006DE8FD /* OperationSigningResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationSigningResult.swift; sourceTree = "<group>"; };
-		7ABC854D2181348D006DE8FD /* Base58String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Base58String.swift; path = Base58String/Base58String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770DFC582214FE5000E8E70A /* Base58Swift.framework in Frameworks */,
 				770DFC562214F75B00E8E70A /* SipHash.framework in Frameworks */,
 				770DFC532214F65E00E8E70A /* CryptoSwift.framework in Frameworks */,
 				770DFC512214F29C00E8E70A /* BigInt.framework in Frameworks */,
@@ -92,6 +93,7 @@
 		770DFC4B2214F13F00E8E70A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				770DFC572214FE5000E8E70A /* Base58Swift.framework */,
 				770DFC552214F75B00E8E70A /* SipHash.framework */,
 				770DFC522214F65E00E8E70A /* CryptoSwift.framework */,
 				770DFC502214F29C00E8E70A /* BigInt.framework */,
@@ -103,21 +105,12 @@
 		7AA8F34D2160158000C05895 = {
 			isa = PBXGroup;
 			children = (
-				7ABC854C21813427006DE8FD /* Base58String */,
 				770DFC292214EF4800E8E70A /* TezosCrypto */,
 				770DFC362214EF4800E8E70A /* TezosCryptoTests */,
 				770DFC4B2214F13F00E8E70A /* Frameworks */,
 				770DFC4E2214F13F00E8E70A /* TezosCrypto.framework */,
 				770DFC542214F6DB00E8E70A /* TezosCryptoTests.xctest */,
 			);
-			sourceTree = "<group>";
-		};
-		7ABC854C21813427006DE8FD /* Base58String */ = {
-			isa = PBXGroup;
-			children = (
-				7ABC854D2181348D006DE8FD /* Base58String.swift */,
-			);
-			name = Base58String;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +232,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/BigInt.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SipHash.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Base58Swift.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -248,6 +242,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BigInt.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CryptoSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SipHash.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Base58Swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -278,7 +273,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				770DFC4F2214F16E00E8E70A /* Base58String.swift in Sources */,
 				770DFC4A2214F05500E8E70A /* KeyPair.swift in Sources */,
 				770DFC492214F05500E8E70A /* OperationSigningResult.swift in Sources */,
 				770DFC482214F05500E8E70A /* Crypto.swift in Sources */,

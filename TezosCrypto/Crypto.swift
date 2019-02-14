@@ -1,5 +1,6 @@
 // Copyright Keefer Taylor, 2019
 
+import Base58Swift
 import CommonCrypto
 import CryptoSwift
 import Foundation
@@ -48,7 +49,7 @@ public class TezosCrypto {
    * Check that a given address is valid public key hash address.
    */
   public static func validateAddress(address: String) -> Bool {
-    guard let decodedData = Data(base58Decoding: address) else {
+    guard let decodedData = Base58.decode(address) else {
       return false
     }
     let decodedBytes = decodedData.bytes
@@ -160,7 +161,7 @@ public class TezosCrypto {
 
     let prefixedKeyWithCheckSum = prefixedKey + prefixedKeyCheckSum
     let data = Data(prefixedKeyWithCheckSum)
-    return String(base58Encoding: data)
+    return Base58.encode(data)
   }
 
   /**
@@ -190,7 +191,7 @@ public class TezosCrypto {
 
   /** Decode an original key from the Base58 encoded key containing a prefix and checksum. */
   private static func decodedKey(from encodedKey: String, prefix: [UInt8]) -> [UInt8]? {
-    guard let decodedKey = Data(base58Decoding: encodedKey) else {
+    guard let decodedKey = Base58.decode(encodedKey) else {
       return nil
     }
 
