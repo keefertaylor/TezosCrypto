@@ -17,16 +17,16 @@ before_deploy:
 after_deploy:
 - pod trunk push --skip-import-validation --skip-tests --allow-warnings
 script:
-- set -o pipefail && xcodebuild test -scheme TezosCrypto -destination 'platform=iOS Simulator,name=iPhone
-  XS,OS=12.0' ONLY_ACTIVE_ARCH=YES | xcpretty
+- set -o pipefail && xcodebuild test -scheme TezosCrypto -destination 'platform=iOS
+  Simulator,name=iPhone XS,OS=12.0' ONLY_ACTIVE_ARCH=YES | xcpretty
 after_success:
 - slather
 - bash <(curl -s https://codecov.io/bash)
 deploy:
   provider: releases
   api_key:
-    secure: md8YfrZO/5WKAPmiIInTk7oWtc/B5FmibnEfwXeCGiVa+0N6CtcJNdQYFmYCxEm7+JCPXBKakk2UFM0T1eOAKOvnwqkxy+xP1aAxvjAP+1hpt8OVGtkXdmemoXNdxoQq+qqGLtfVtr5cVdeL1sqnpfKOdUQeCZXYcy8LL3oOuMwh3jn9bZbctVYTs7L1UD/p8tEFTdfxLxropQ+u96mXb1kmVkqKwzU4Sro6D9opHaGW2aHIJF3CVVAELr/pICM14HwMCvqhpZ8q3z9FhIdFab9EaFGZE9c7w00q+2wUdl0uoQJ7oe2nCtCYJj6Hh7onRUyc81e/MepEdQHyD5jLGmKbPpPFdGM+BjtVUfdvPAzV5kAp88HuqBAn++BVm2cT4wtawsUFsC4lnfR+0vBAxFU69L7JhxT744bc+X58XS+UUBFcAJsYlDU579iZWP0xFzZHjy+2q8PzuB/2iqY1n3aeSkkrHt7meAlmepzQUdJIM3BqUfibW/fqL/A5uhSOCHeaH70r24CkBlaUlQcOWUv5V48j99cae9vlNE/PJ68cC94LVz1t7jDM98sU6dCs7vgkPkYI4QzBKbnqCRk0MdvdwwATadmhjOJKtmJxm8tDmPAf4Gp9tLzCuDaokCd2HJpWUotmHy1DkM6+xGX4i3s21aU0U81bgQgYJFV1BWk=
+    secure: 0W9EdUlK8nDrSU4rEv7lhobC+lwrCqiu69eLgFUbB8DofPZde4/ORhDVi3Wcd484nkZxn6Pb3U8u4bhz4Zgv965eaWEFIPExZ+jTUe/qkMhCYfq1n8WQwAuh6OJhZ2hfA022/rl80cLZruxPQlVgQW3Jx3L9EuTy4sDntB2ZyM6SMb21qOEHTp+PWyiudYLgBnGc3XsuuFQ1tQg8yAQRk4jrZrWZJttCYUfeuLyPaO58anHUtCLvySmmIz1KHUkOkWgKcs/xMusz9BY0xLURyFbOoZNxhunyCyiFik9iExtmrsCluURvn/CknSggSh6t8MWk8yXdgXfTYdARnb7AStnkybbfVVYLOcuy8+jfFneF94M5dVCmlSWyy1hetZJjl7Vs8M3WSxKlYlSjomj2aSAVfasGqTHRFvcsSfIoRmbqn8zRsYRieI1OX1J9AtSzLT7VwVi3/B5xkbuMrbAtbXtRyn6+akNy7EUPi/nEEZgGTbOkLd/sSu4hCueCjPDPsexwOMkm6ADIxGjyH4eA6/Pu3wZHCpgoM8DrYhrdOcTeQ5cAJN/AIX3b5VnWTAXcDSbWDtrBo0rwzNsG7t15SpqY5coNg8DHJorlY0z1Fe4CmwkqtvWX+C2RQLzxdB5bPFjTG7apcZl74ZweLF/mW2+rPOZvIepK8duAxgT8pfM=
   file: "$FRAMEWORK_NAME.framework.zip"
-  skip_cleanup: true
   on:
     repo: keefertaylor/TezosCrypto
+    tags: true
