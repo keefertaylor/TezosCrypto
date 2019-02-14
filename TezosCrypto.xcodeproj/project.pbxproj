@@ -12,6 +12,11 @@
 		770DFC482214F05500E8E70A /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA9582A217CB6F700865D55 /* Crypto.swift */; };
 		770DFC492214F05500E8E70A /* OperationSigningResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC854A217EA4AE006DE8FD /* OperationSigningResult.swift */; };
 		770DFC4A2214F05500E8E70A /* KeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E2ECF217671B20073C080 /* KeyPair.swift */; };
+		770DFC4D2214F13F00E8E70A /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC4C2214F13F00E8E70A /* Sodium.framework */; };
+		770DFC4F2214F16E00E8E70A /* Base58String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC854D2181348D006DE8FD /* Base58String.swift */; };
+		770DFC512214F29C00E8E70A /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC502214F29C00E8E70A /* BigInt.framework */; };
+		770DFC532214F65E00E8E70A /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC522214F65E00E8E70A /* CryptoSwift.framework */; };
+		770DFC562214F75B00E8E70A /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC552214F75B00E8E70A /* SipHash.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,12 +30,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		770DFC282214EF4700E8E70A /* TezosCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TezosCrypto.framework; path = "/Users/keefertaylor/fix_tk/TezosCrypto/build/Debug-iphoneos/TezosCrypto.framework"; sourceTree = "<absolute>"; };
 		770DFC2A2214EF4800E8E70A /* TezosCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TezosCrypto.h; sourceTree = "<group>"; };
 		770DFC2B2214EF4800E8E70A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		770DFC302214EF4800E8E70A /* TezosCryptoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TezosCryptoTests.xctest; path = "/Users/keefertaylor/fix_tk/TezosCrypto/build/Debug-iphoneos/TezosCryptoTests.xctest"; sourceTree = "<absolute>"; };
 		770DFC372214EF4800E8E70A /* TezosCryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TezosCryptoTests.swift; sourceTree = "<group>"; };
 		770DFC392214EF4800E8E70A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		770DFC4C2214F13F00E8E70A /* Sodium.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sodium.framework; path = Carthage/Build/iOS/Sodium.framework; sourceTree = "<group>"; };
+		770DFC4E2214F13F00E8E70A /* TezosCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TezosCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		770DFC502214F29C00E8E70A /* BigInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BigInt.framework; path = Carthage/Build/iOS/BigInt.framework; sourceTree = "<group>"; };
+		770DFC522214F65E00E8E70A /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
+		770DFC542214F6DB00E8E70A /* TezosCryptoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TezosCryptoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		770DFC552214F75B00E8E70A /* SipHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SipHash.framework; path = Carthage/Build/iOS/SipHash.framework; sourceTree = "<group>"; };
 		7A1E2ECF217671B20073C080 /* KeyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPair.swift; sourceTree = "<group>"; };
 		7AA9582A217CB6F700865D55 /* Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		7ABC854A217EA4AE006DE8FD /* OperationSigningResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationSigningResult.swift; sourceTree = "<group>"; };
@@ -42,6 +51,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770DFC562214F75B00E8E70A /* SipHash.framework in Frameworks */,
+				770DFC532214F65E00E8E70A /* CryptoSwift.framework in Frameworks */,
+				770DFC512214F29C00E8E70A /* BigInt.framework in Frameworks */,
+				770DFC4D2214F13F00E8E70A /* Sodium.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,12 +89,26 @@
 			path = TezosCryptoTests;
 			sourceTree = "<group>";
 		};
+		770DFC4B2214F13F00E8E70A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				770DFC552214F75B00E8E70A /* SipHash.framework */,
+				770DFC522214F65E00E8E70A /* CryptoSwift.framework */,
+				770DFC502214F29C00E8E70A /* BigInt.framework */,
+				770DFC4C2214F13F00E8E70A /* Sodium.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7AA8F34D2160158000C05895 = {
 			isa = PBXGroup;
 			children = (
 				7ABC854C21813427006DE8FD /* Base58String */,
 				770DFC292214EF4800E8E70A /* TezosCrypto */,
 				770DFC362214EF4800E8E70A /* TezosCryptoTests */,
+				770DFC4B2214F13F00E8E70A /* Frameworks */,
+				770DFC4E2214F13F00E8E70A /* TezosCrypto.framework */,
+				770DFC542214F6DB00E8E70A /* TezosCryptoTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,7 +151,7 @@
 			);
 			name = TezosCrypto;
 			productName = TezosCrypto;
-			productReference = 770DFC282214EF4700E8E70A /* TezosCrypto.framework */;
+			productReference = 770DFC4E2214F13F00E8E70A /* TezosCrypto.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		770DFC2F2214EF4800E8E70A /* TezosCryptoTests */ = {
@@ -142,7 +169,7 @@
 			);
 			name = TezosCryptoTests;
 			productName = TezosCryptoTests;
-			productReference = 770DFC302214EF4800E8E70A /* TezosCryptoTests.xctest */;
+			productReference = 770DFC542214F6DB00E8E70A /* TezosCryptoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -160,7 +187,6 @@
 					};
 					770DFC2F2214EF4800E8E70A = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 7AA8F3552160158000C05895;
 					};
 				};
 			};
@@ -209,11 +235,19 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Sodium.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BigInt.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SipHash.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Sodium.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BigInt.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CryptoSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SipHash.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -244,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770DFC4F2214F16E00E8E70A /* Base58String.swift in Sources */,
 				770DFC4A2214F05500E8E70A /* KeyPair.swift in Sources */,
 				770DFC492214F05500E8E70A /* OperationSigningResult.swift in Sources */,
 				770DFC482214F05500E8E70A /* Crypto.swift in Sources */,
@@ -280,9 +315,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = TezosCrypto/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,9 +348,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = TezosCrypto/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,7 +387,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TezosKit.app/TezosKit";
 			};
 			name = Debug;
 		};
@@ -365,7 +407,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TezosKit.app/TezosKit";
 			};
 			name = Release;
 		};
