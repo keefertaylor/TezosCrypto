@@ -18,9 +18,6 @@ public class TezosCrypto {
 
   private static let operationWaterMark = "03"
 
-  // Length of checksum appended to Base58Check encoded strings.
-  private static let checksumLength = 4
-
   private static let sodium: Sodium = Sodium()
 
   /**
@@ -149,17 +146,14 @@ public class TezosCrypto {
 
   /** Decode an original key from the Base58 encoded key containing a prefix and checksum. */
   private static func decodedKey(from encodedKey: String, prefix: [UInt8]) -> [UInt8]? {
-    guard let decodedKey = Base58.base58Decode(encodedKey) else {
+    guard var decodedBytes = Base58.base58CheckDecode(encodedKey) else {
       return nil
     }
 
-    // Decoded key will have extra bytes at the beginning for the prefix and extra bytes at the end
-    // as a checksum. Drop these bytes in order to get the original key.
-    var decodedSecretKeyBytes = Array(decodedKey)
-    decodedSecretKeyBytes.removeSubrange(0 ..< prefix.count)
-    decodedSecretKeyBytes.removeSubrange((decodedSecretKeyBytes.count - checksumLength)...)
-
-    return decodedSecretKeyBytes
+    // Decoded key will have extra bytes at the beginning for the prefix. Drop these bytes in order to get the original
+    // key.
+    decodedBytes.removeSubrange(0 ..< prefix.count)
+    return decodedBytes
   }
 
   /**
