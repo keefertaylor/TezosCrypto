@@ -49,26 +49,16 @@ public class TezosCrypto {
    * Check that a given address is valid public key hash address.
    */
   public static func validateAddress(address: String) -> Bool {
-    guard let decodedBytes = Base58.base58Decode(address) else {
+    // Decode bytes. This call verifies the checksum is correct.
+    guard let decodedBytes = Base58.base58CheckDecode(address) else {
       return false
     }
 
-    // Check that the prefix is correct.    // Check that the prefix is correct.
+    // Check that the prefix is correct.
     for (i, byte) in publicKeyHashPrefix.enumerated() where decodedBytes[i] != byte {
       return false
     }
 
-    // Check that checksum is correct.
-    let checksumStartIndex = decodedBytes.count - checksumLength
-    let addressWithoutChecksum = decodedBytes[0 ..< checksumStartIndex]
-    let checksum = decodedBytes[checksumStartIndex...]
-    guard let expectedChecksum = self.calculateChecksum(Array(addressWithoutChecksum)) else {
-      return false
-    }
-
-    for (i, byte) in checksum.enumerated() where expectedChecksum[i] != byte {
-      return false
-    }
     return true
   }
 
@@ -153,38 +143,8 @@ public class TezosCrypto {
    *    [prefix][key][4 byte checksum]
    */
   private static func encode(message: [UInt8], prefix: [UInt8]) -> String? {
-    let prefixedKey = prefix + message
-    guard let prefixedKeyCheckSum = calculateChecksum(prefixedKey) else {
-      return nil
-    }
-
-    let prefixedKeyWithCheckSum = prefixedKey + prefixedKeyCheckSum
-    return Base58.base58Encode(prefixedKeyWithCheckSum)
-  }
-
-  /**
-   * Calculate a checksum for a given input by hashing twice and then taking the first four bytes.
-   */
-  private static func calculateChecksum(_ input: [UInt8]) -> [UInt8]? {
-    guard let hashedData = sha256(Data(input)),
-      let doubleHashedData = sha256(hashedData) else {
-      return nil
-    }
-    let doubleHashedArray = Array(doubleHashedData)
-    return Array(doubleHashedArray.prefix(checksumLength))
-  }
-
-  /** Create a sha256 hash of the given data. */
-  private static func sha256(_ data: Data) -> Data? {
-    guard let res = NSMutableData(length: Int(CC_SHA256_DIGEST_LENGTH)) else {
-      return nil
-    }
-    CC_SHA256(
-      (data as NSData).bytes,
-      CC_LONG(data.count),
-      res.mutableBytes.assumingMemoryBound(to: UInt8.self)
-    )
-    return res as Data
+    let prefixedMessage = prefix + message
+    return Base58.base58CheckEncode(prefixedMessage)
   }
 
   /** Decode an original key from the Base58 encoded key containing a prefix and checksum. */
