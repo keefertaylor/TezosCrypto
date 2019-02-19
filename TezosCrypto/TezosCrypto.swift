@@ -49,10 +49,9 @@ public class TezosCrypto {
    * Check that a given address is valid public key hash address.
    */
   public static func validateAddress(address: String) -> Bool {
-    guard let decodedData = Base58.decode(address) else {
+    guard let decodedBytes = Base58.base58Decode(address) else {
       return false
     }
-    let decodedBytes = decodedData.bytes
 
     // Check that the prefix is correct.    // Check that the prefix is correct.
     for (i, byte) in publicKeyHashPrefix.enumerated() where decodedBytes[i] != byte {
@@ -160,8 +159,7 @@ public class TezosCrypto {
     }
 
     let prefixedKeyWithCheckSum = prefixedKey + prefixedKeyCheckSum
-    let data = Data(prefixedKeyWithCheckSum)
-    return Base58.encode(data)
+    return Base58.base58Encode(prefixedKeyWithCheckSum)
   }
 
   /**
@@ -191,7 +189,7 @@ public class TezosCrypto {
 
   /** Decode an original key from the Base58 encoded key containing a prefix and checksum. */
   private static func decodedKey(from encodedKey: String, prefix: [UInt8]) -> [UInt8]? {
-    guard let decodedKey = Base58.decode(encodedKey) else {
+    guard let decodedKey = Base58.base58Decode(encodedKey) else {
       return nil
     }
 
