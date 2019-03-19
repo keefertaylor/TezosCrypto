@@ -6,18 +6,29 @@ import CryptoSwift
 import Foundation
 import Sodium
 
+private enum Prefix {
+  fileprivate enum Watermark {
+    fileprivate static let operation = "03"
+  }
+
+  fileprivate enum Keys {
+    fileprivate static let `public`: [UInt8] = [13, 15, 37, 217] // edpk
+    fileprivate static let secret: [UInt8] = [43, 246, 78, 7]    // edsk
+  }
+
+  fileprivate enum Sign {
+    fileprivate static let operation: [UInt8] = [9, 245, 205, 134, 18] // edsig
+  }
+
+  fileprivate enum Address {
+    fileprivate static let tz1: [UInt8] = [6, 161, 159] // tz1
+  }
+}
+
 /**
  * A static helper class that provides utility functions for cyptography.
  */
 public class TezosCrypto {
-  private static let publicKeyPrefix: [UInt8] = [13, 15, 37, 217] // edpk
-  private static let secretKeyPrefix: [UInt8] = [43, 246, 78, 7] // edsk
-  private static let publicKeyHashPrefix: [UInt8] = [6, 161, 159] // tz1
-
-  private static let signedOperationPrefix: [UInt8] = [9, 245, 205, 134, 18] // edsig
-
-  private static let operationWaterMark = "03"
-
   private static let sodium: Sodium = Sodium()
 
   /**
@@ -28,7 +39,7 @@ public class TezosCrypto {
     guard let publicKeyBytes = self.extractPublicKeyBytes(secretKey: secretKey) else {
       return nil
     }
-    return encode(message: publicKeyBytes, prefix: publicKeyPrefix)
+    return encode(message: publicKeyBytes, prefix: Prefix.Keys.public)
   }
 
   /**
@@ -52,7 +63,7 @@ public class TezosCrypto {
     }
 
     // Check that the prefix is correct.
-    for (i, byte) in publicKeyHashPrefix.enumerated() where decodedBytes[i] != byte {
+    for (i, byte) in Prefix.Address.tz1.enumerated() where decodedBytes[i] != byte {
       return false
     }
 
@@ -64,7 +75,7 @@ public class TezosCrypto {
    * associated with the given public key.
    */
   public static func verifyBytes(bytes: [UInt8], signature: [UInt8], publicKey: String) -> Bool {
-    guard let decodedPublicKeyBytes = self.decodedKey(from: publicKey, prefix: publicKeyPrefix) else {
+    guard let decodedPublicKeyBytes = self.decodedKey(from: publicKey, prefix: Prefix.Keys.public) else {
       return false
     }
     return sodium.sign.verify(message: bytes, publicKey: decodedPublicKeyBytes, signature: signature)
@@ -82,15 +93,15 @@ public class TezosCrypto {
     operation: String,
     secretKey: String
   ) -> OperationSigningResult? {
-    guard let decodedSecretKeyBytes = self.decodedKey(from: secretKey, prefix: secretKeyPrefix) else {
+    guard let decodedSecretKeyBytes = self.decodedKey(from: secretKey, prefix: Prefix.Keys.secret) else {
       return nil
     }
 
-    guard let watermarkedOperation = sodium.utils.hex2bin(operationWaterMark + operation),
+    guard let watermarkedOperation = sodium.utils.hex2bin(Prefix.Watermark.operation + operation),
       let hashedOperation = sodium.genericHash.hash(message: watermarkedOperation, outputLength: 32),
       let signature = sodium.sign.signature(message: hashedOperation, secretKey: decodedSecretKeyBytes),
       let signatureHex = sodium.utils.bin2hex(signature),
-      let edsig = encode(message: signature, prefix: signedOperationPrefix) else {
+      let edsig = encode(message: signature, prefix: Prefix.Sign.operation) else {
         return nil
     }
 
@@ -113,14 +124,14 @@ public class TezosCrypto {
    * Generates a Tezos public key from the given input public key.
    */
   public static func tezosPublicKey(from key: [UInt8]) -> String? {
-    return encode(message: key, prefix: publicKeyPrefix)
+    return encode(message: key, prefix: Prefix.Keys.public)
   }
 
   /**
    * Generates a Tezos private key from the given input private key.
    */
   public static func tezosSecretKey(from key: [UInt8]) -> String? {
-    return encode(message: key, prefix: secretKeyPrefix)
+    return encode(message: key, prefix: Prefix.Keys.secret)
   }
 
   /**
@@ -130,7 +141,7 @@ public class TezosCrypto {
     guard let hash = sodium.genericHash.hash(message: key, key: [], outputLength: 20) else {
       return ""
     }
-    return encode(message: hash, prefix: publicKeyHashPrefix)
+    return encode(message: hash, prefix: Prefix.Address.tz1)
   }
 
   /**
@@ -161,7 +172,7 @@ public class TezosCrypto {
    * "edsk".
    */
   public static func extractPublicKeyBytes(secretKey: String) -> [UInt8]? {
-    guard let decodedSecretKeyBytes = self.decodedKey(from: secretKey, prefix: secretKeyPrefix) else {
+    guard let decodedSecretKeyBytes = self.decodedKey(from: secretKey, prefix: Prefix.Keys.secret) else {
       return nil
     }
     return Array(decodedSecretKeyBytes[32...])
