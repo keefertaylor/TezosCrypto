@@ -8,7 +8,7 @@ import Sodium
 
 private enum Prefix {
   fileprivate enum Watermark {
-    fileprivate static let operation = "03"
+    fileprivate static let operation: [UInt8] = [ 3 ] // 03
   }
 
   fileprivate enum Keys {
@@ -93,12 +93,13 @@ public class TezosCrypto {
     operation: String,
     secretKey: String
   ) -> OperationSigningResult? {
-    guard let decodedSecretKeyBytes = self.decodedKey(from: secretKey, prefix: Prefix.Keys.secret) else {
+    guard let decodedSecretKeyBytes = self.decodedKey(from: secretKey, prefix: Prefix.Keys.secret),
+          let operationBin = sodium.utils.hex2bin(operation) else {
       return nil
     }
+    let watermarkedOperation = Prefix.Watermark.operation + operationBin
 
-    guard let watermarkedOperation = sodium.utils.hex2bin(Prefix.Watermark.operation + operation),
-      let hashedOperation = sodium.genericHash.hash(message: watermarkedOperation, outputLength: 32),
+    guard  let hashedOperation = sodium.genericHash.hash(message: watermarkedOperation, outputLength: 32),
       let signature = sodium.sign.signature(message: hashedOperation, secretKey: decodedSecretKeyBytes),
       let signatureHex = sodium.utils.bin2hex(signature),
       let edsig = encode(message: signature, prefix: Prefix.Sign.operation) else {
