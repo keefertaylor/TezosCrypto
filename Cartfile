@@ -1,4 +1,4 @@
-github "jedisct1/swift-sodium" ~> "master"
+github "jedisct1/swift-sodium" ~> "HEAD"
 github "attaswift/BigInt" ~> 3.1
 github "krzyzanowskim/CryptoSwift" ~> 0.14.0
 github "keefertaylor/Base58Swift" ~> 1.0.2
