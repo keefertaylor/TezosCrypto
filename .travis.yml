@@ -10,6 +10,10 @@ before_install:
 - gem install cocoapods
 - brew update
 - brew install libsodium
+- pwd
+- ls
+- rm Cartfile.resolved
+- rm -rf Carthage/
 - brew outdated carthage || brew upgrade carthage
 - carthage bootstrap --platform iOS --cache-builds
 before_deploy:
