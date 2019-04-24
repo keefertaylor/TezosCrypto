@@ -105,22 +105,14 @@ class TezosCryptoTests: XCTestCase {
 
     // swiftlint:disable line_length
     XCTAssertEqual(
-      result.sbytes,
+      result.injectableHexBytes,
       "deadbeefd02f13d0a8fd2c82e7f00fd5df3bb23c8292af787715ed8273581fd5ca7e96cd0ded38fbfef0cae48db4ebafb8bdac792b19eb61eb8c90a8204bbe657e63750d"
     )
     // swiftlint:enable line_length
 
     XCTAssertEqual(
-      result.edsig,
+      result.base58Representation,
       "edsigu13UN5tAjQsxaLmXL7vCXM9BRggVDygne5LDZs7fHNH61PXfgbmXaAAq63GR8gqgeqa3aYNH4dnv18LdHaSCetC9sSJUCF"
-    )
-
-    XCTAssertEqual(
-      result.operationBytes,
-      [
-        157, 20, 81, 191, 15, 135, 239, 179, 10, 160, 229, 185, 145, 23, 78, 66, 127, 4, 124, 81, 94, 40, 28, 90, 237,
-        88, 213, 226, 125, 40, 11, 153
-      ]
     )
   }
 

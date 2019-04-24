@@ -73,20 +73,17 @@ public enum TezosCrypto {
     secretKey: String
   ) -> OperationSigningResult? {
     guard let decodedSecretKeyBytes = self.decodedKey(from: secretKey, prefix: Prefix.Keys.secret),
-          let operationBin = sodium.utils.hex2bin(operation) else {
+          let operationBytes = sodium.utils.hex2bin(operation) else {
       return nil
     }
-    let watermarkedOperation = Prefix.Watermark.operation + operationBin
+    let watermarkedOperation = Prefix.Watermark.operation + operationBytes
 
     guard  let hashedOperation = sodium.genericHash.hash(message: watermarkedOperation, outputLength: 32),
-      let signature = sodium.sign.signature(message: hashedOperation, secretKey: decodedSecretKeyBytes),
-      let signatureHex = sodium.utils.bin2hex(signature),
-      let edsig = encode(message: signature, prefix: Prefix.Sign.operation) else {
+      let signature = sodium.sign.signature(message: hashedOperation, secretKey: decodedSecretKeyBytes) else {
         return nil
     }
 
-    let sbytes = operation + signatureHex
-    return OperationSigningResult(operationBytes: hashedOperation, signature: signature, edsig: edsig, sbytes: sbytes)
+    return OperationSigningResult(operationBytes: operationBytes, signature: signature)
   }
 
   /**
@@ -124,13 +121,10 @@ public enum TezosCrypto {
     return encode(message: hash, prefix: Prefix.Address.tz1)
   }
 
-  /**
-   * Encode a Base58 String from the given message and prefix.
-   *
-   * The returned address is a Base58 encoded String with the following format:
-   *    [prefix][key][4 byte checksum]
-   */
-  private static func encode(message: [UInt8], prefix: [UInt8]) -> String? {
+  /// Encode a Base58 String from the given message and prefix.
+  ///
+  /// The returned address is a Base58 encoded String with the following format: [prefix][key][4 byte checksum]
+  public static func encode(message: [UInt8], prefix: [UInt8]) -> String? {
     let prefixedMessage = prefix + message
     return Base58.base58CheckEncode(prefixedMessage)
   }
