@@ -17,6 +17,7 @@
 		770DFC532214F65E00E8E70A /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC522214F65E00E8E70A /* CryptoSwift.framework */; };
 		770DFC562214F75B00E8E70A /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC552214F75B00E8E70A /* SipHash.framework */; };
 		770DFC582214FE5000E8E70A /* Base58Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770DFC572214FE5000E8E70A /* Base58Swift.framework */; };
+		773D39AE226FF8DC00C315F0 /* Prefixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D39AD226FF8DC00C315F0 /* Prefixes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		770DFC542214F6DB00E8E70A /* TezosCryptoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TezosCryptoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		770DFC552214F75B00E8E70A /* SipHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SipHash.framework; path = Carthage/Build/iOS/SipHash.framework; sourceTree = "<group>"; };
 		770DFC572214FE5000E8E70A /* Base58Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base58Swift.framework; path = Carthage/Build/iOS/Base58Swift.framework; sourceTree = "<group>"; };
+		773D39AD226FF8DC00C315F0 /* Prefixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefixes.swift; sourceTree = "<group>"; };
 		7A1E2ECF217671B20073C080 /* KeyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPair.swift; sourceTree = "<group>"; };
 		7AA9582A217CB6F700865D55 /* TezosCrypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TezosCrypto.swift; sourceTree = "<group>"; };
 		7ABC854A217EA4AE006DE8FD /* OperationSigningResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationSigningResult.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				7A1E2ECF217671B20073C080 /* KeyPair.swift */,
 				7AA9582A217CB6F700865D55 /* TezosCrypto.swift */,
 				770DFC2A2214EF4800E8E70A /* TezosCrypto.h */,
+				773D39AD226FF8DC00C315F0 /* Prefixes.swift */,
 				770DFC2B2214EF4800E8E70A /* Info.plist */,
 			);
 			path = TezosCrypto;
@@ -276,6 +279,7 @@
 				770DFC4A2214F05500E8E70A /* KeyPair.swift in Sources */,
 				770DFC492214F05500E8E70A /* OperationSigningResult.swift in Sources */,
 				770DFC482214F05500E8E70A /* TezosCrypto.swift in Sources */,
+				773D39AE226FF8DC00C315F0 /* Prefixes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

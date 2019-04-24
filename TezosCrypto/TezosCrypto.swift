@@ -6,29 +6,8 @@ import CryptoSwift
 import Foundation
 import Sodium
 
-private enum Prefix {
-  fileprivate enum Watermark {
-    fileprivate static let operation: [UInt8] = [ 3 ] // 03
-  }
-
-  fileprivate enum Keys {
-    fileprivate static let `public`: [UInt8] = [13, 15, 37, 217] // edpk
-    fileprivate static let secret: [UInt8] = [43, 246, 78, 7]    // edsk
-  }
-
-  fileprivate enum Sign {
-    fileprivate static let operation: [UInt8] = [9, 245, 205, 134, 18] // edsig
-  }
-
-  fileprivate enum Address {
-    fileprivate static let tz1: [UInt8] = [6, 161, 159] // tz1
-  }
-}
-
-/**
- * A static helper class that provides utility functions for cyptography.
- */
-public class TezosCrypto {
+/// A static helper class that provides utility functions for cyptography.
+public enum TezosCrypto {
   private static let sodium: Sodium = Sodium()
 
   /**
@@ -178,7 +157,4 @@ public class TezosCrypto {
     }
     return Array(decodedSecretKeyBytes[32...])
   }
-
-  /** Please do not instantiate this static helper class. */
-  private init() {}
 }
