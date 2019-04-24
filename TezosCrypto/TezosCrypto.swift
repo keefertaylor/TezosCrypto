@@ -86,9 +86,7 @@ public enum TezosCrypto {
     return OperationSigningResult(operationBytes: operationBytes, signature: signature)
   }
 
-  /**
-   * Generates a KeyPair given a hex-encoded seed string.
-   */
+  /// Generates a KeyPair given a hex-encoded seed string.
   public static func keyPair(from seedString: String) -> KeyPair? {
     guard let seed = sodium.utils.hex2bin(seedString),
       let keyPair = sodium.sign.keyPair(seed: seed) else {
