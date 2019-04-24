@@ -1,5 +1,5 @@
 github "attaswift/BigInt" "v3.1.0"
 github "attaswift/SipHash" "v1.2.2"
-github "jedisct1/swift-sodium" "0.7.0"
+github "jedisct1/swift-sodium" "0.8.0"
 github "keefertaylor/Base58Swift" "1.1.0"
 github "krzyzanowskim/CryptoSwift" "0.14.0"
