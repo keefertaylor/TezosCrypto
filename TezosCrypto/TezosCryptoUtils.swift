@@ -7,7 +7,7 @@ import Foundation
 import Sodium
 
 /// A static helper class that provides utility functions for cyptography.
-public enum TezosCrypto {
+public enum TezosCryptoUtils {
   private static let sodium: Sodium = Sodium()
 
   /**

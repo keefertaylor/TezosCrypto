@@ -57,9 +57,9 @@ class TezosCryptoTests: XCTestCase {
     let fakeOperation = "123456"
     guard let keyPair1 = TezosCrypto.keyPair(from: "cce78b57ed8f4ec6767ed35f3aa41df525a03455e24bcc45a8518f63fbeda772"),
       let keyPair2 = TezosCrypto.keyPair(from: "cc90fecd0a596e2cd41798612682395faa2ebfe18945a88c6f01e4bfab17c3e3"),
-      let tezosPublicKey1 = TezosCrypto.tezosPublicKey(from: keyPair1.publicKey),
-      let tezosSecretKey1 = TezosCrypto.tezosSecretKey(from: keyPair1.secretKey),
-      let tezosPublicKey2 = TezosCrypto.tezosSecretKey(from: keyPair2.secretKey) else {
+      let tezosPublicKey1 = TezosCrypto.tezosPublicKey(from: keyPair1.public),
+      let tezosSecretKey1 = TezosCrypto.tezosSecretKey(from: keyPair1.secret.bytes),
+      let tezosPublicKey2 = TezosCrypto.tezosSecretKey(from: keyPair2.secret.bytes) else {
         XCTFail()
         return
     }
@@ -123,14 +123,14 @@ class TezosCryptoTests: XCTestCase {
       return
     }
     XCTAssertEqual(
-      keyPair.publicKey,
+      keyPair.public,
       [
         66, 154, 152, 108, 128, 114, 164, 10, 31, 58, 62, 42, 181, 165, 129, 155, 177, 178, 251, 105, 153, 60, 80, 4,
         131, 120, 21, 185, 220, 85, 146, 62
       ]
     )
     XCTAssertEqual(
-      keyPair.secretKey,
+      keyPair.secret.bytes,
       [
         204, 231, 139, 87, 237, 143, 78, 198, 118, 126, 211, 95, 58, 164, 29, 245, 37, 160, 52, 85, 226, 75, 204, 69,
         168, 81, 143, 99, 251, 237, 167, 114, 66, 154, 152, 108, 128, 114, 164, 10, 31, 58, 62, 42, 181, 165, 129, 155,
