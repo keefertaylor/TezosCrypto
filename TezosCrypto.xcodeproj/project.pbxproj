@@ -20,6 +20,10 @@
 		773D39AE226FF8DC00C315F0 /* Prefixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D39AD226FF8DC00C315F0 /* Prefixes.swift */; };
 		773D39B0227000DE00C315F0 /* EllipticalCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D39AF227000DE00C315F0 /* EllipticalCurve.swift */; };
 		773D39B22270015000C315F0 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D39B12270015000C315F0 /* SecretKey.swift */; };
+		773D39B422712F6200C315F0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D39B322712F6200C315F0 /* PublicKey.swift */; };
+		773D39B62271325D00C315F0 /* SecretKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D39B52271325D00C315F0 /* SecretKeyTests.swift */; };
+		773D39B922713F6300C315F0 /* MnemonicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773D39B822713F6300C315F0 /* MnemonicKit.framework */; };
+		773D39BB227142E300C315F0 /* PublicKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D39BA227142E300C315F0 /* PublicKeyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		773D39AD226FF8DC00C315F0 /* Prefixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefixes.swift; sourceTree = "<group>"; };
 		773D39AF227000DE00C315F0 /* EllipticalCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipticalCurve.swift; sourceTree = "<group>"; };
 		773D39B12270015000C315F0 /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
+		773D39B322712F6200C315F0 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
+		773D39B52271325D00C315F0 /* SecretKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeyTests.swift; sourceTree = "<group>"; };
+		773D39B822713F6300C315F0 /* MnemonicKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MnemonicKit.framework; path = Carthage/Build/iOS/MnemonicKit.framework; sourceTree = "<group>"; };
+		773D39BA227142E300C315F0 /* PublicKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKeyTests.swift; sourceTree = "<group>"; };
 		7A1E2ECF217671B20073C080 /* KeyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPair.swift; sourceTree = "<group>"; };
 		7AA9582A217CB6F700865D55 /* TezosCryptoUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TezosCryptoUtils.swift; sourceTree = "<group>"; };
 		7ABC854A217EA4AE006DE8FD /* OperationSigningResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationSigningResult.swift; sourceTree = "<group>"; };
@@ -57,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				773D39B922713F6300C315F0 /* MnemonicKit.framework in Frameworks */,
 				770DFC582214FE5000E8E70A /* Base58Swift.framework in Frameworks */,
 				770DFC562214F75B00E8E70A /* SipHash.framework in Frameworks */,
 				770DFC532214F65E00E8E70A /* CryptoSwift.framework in Frameworks */,
@@ -80,6 +89,7 @@
 			children = (
 				7ABC854A217EA4AE006DE8FD /* OperationSigningResult.swift */,
 				773D39B12270015000C315F0 /* SecretKey.swift */,
+				773D39B322712F6200C315F0 /* PublicKey.swift */,
 				7A1E2ECF217671B20073C080 /* KeyPair.swift */,
 				7AA9582A217CB6F700865D55 /* TezosCryptoUtils.swift */,
 				773D39AF227000DE00C315F0 /* EllipticalCurve.swift */,
@@ -94,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				770DFC372214EF4800E8E70A /* TezosCryptoTests.swift */,
+				773D39B52271325D00C315F0 /* SecretKeyTests.swift */,
+				773D39BA227142E300C315F0 /* PublicKeyTests.swift */,
 				770DFC392214EF4800E8E70A /* Info.plist */,
 			);
 			path = TezosCryptoTests;
@@ -102,6 +114,7 @@
 		770DFC4B2214F13F00E8E70A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				773D39B822713F6300C315F0 /* MnemonicKit.framework */,
 				770DFC572214FE5000E8E70A /* Base58Swift.framework */,
 				770DFC552214F75B00E8E70A /* SipHash.framework */,
 				770DFC522214F65E00E8E70A /* CryptoSwift.framework */,
@@ -242,6 +255,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SipHash.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Base58Swift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MnemonicKit.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -252,6 +266,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CryptoSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SipHash.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Base58Swift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MnemonicKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -273,7 +288,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint --strict\nelse\necho \"warning: SwiftLint not installed, run `brew install swiftlint`\"\nfi\n";
+			shellScript = "#if which swiftlint >/dev/null; then\n#swiftlint --strict\n#else\n#echo \"warning: SwiftLint not installed, run `brew install swiftlint`\"\n#fi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -282,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				773D39B422712F6200C315F0 /* PublicKey.swift in Sources */,
 				770DFC4A2214F05500E8E70A /* KeyPair.swift in Sources */,
 				773D39B22270015000C315F0 /* SecretKey.swift in Sources */,
 				770DFC492214F05500E8E70A /* OperationSigningResult.swift in Sources */,
@@ -295,7 +311,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				773D39BB227142E300C315F0 /* PublicKeyTests.swift in Sources */,
 				770DFC382214EF4800E8E70A /* TezosCryptoTests.swift in Sources */,
+				773D39B62271325D00C315F0 /* SecretKeyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
