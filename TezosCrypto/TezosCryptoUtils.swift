@@ -8,7 +8,7 @@ import Sodium
 
 /// A static helper class that provides utility functions for cyptography.
 public enum TezosCryptoUtils {
-  /// Check that a given address is valid public key hash address.
+  /// Check that a given address is valid public key hash.
   public static func validateAddress(address: String) -> Bool {
     // Decode bytes. This call verifies the checksum is correct.
     guard let decodedBytes = Base58.base58CheckDecode(address) else {
@@ -23,13 +23,18 @@ public enum TezosCryptoUtils {
     return true
   }
 
-  /// Verify that the given signature is a signed version of the given bytes by the secret key associated with the given
-  /// public key.
-  public static func verifyBytes(bytes: [UInt8], signature: [UInt8], publicKey: String) -> Bool {
-    guard let publicKey = PublicKey(string: publicKey, signingCurve: .ed25519) else {
-      return false
+  /// Verify that the given signature matches the given input bytes.
+  ///
+  /// - Parameters:
+  ///   - bytes: The bytes to check.
+  ///   - signature: The proposed signature of the bytes.
+  ///   - publicKey: The proposed public key.
+  /// - Returns: True if the public key and signature match the given bytes.
+  public static func verifyBytes(bytes: [UInt8], signature: [UInt8], publicKey: PublicKey) -> Bool {
+    switch publicKey.signingCurve {
+    case .ed25519:
+      return Sodium.shared.sign.verify(message: bytes, publicKey: publicKey.bytes, signature: signature)
     }
-    return Sodium.shared.sign.verify(message: bytes, publicKey: publicKey.bytes, signature: signature)
   }
 
   /// Sign a forged operation with the given secret key.

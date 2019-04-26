@@ -41,21 +41,21 @@ class TezosCryptoTests: XCTestCase {
       TezosCryptoUtils.verifyBytes(
         bytes: result.hashedOperationBytes,
         signature: result.signature,
-        publicKey: publicKey1.base58CheckRepresentation
+        publicKey: publicKey1
       )
     )
     XCTAssertFalse(
       TezosCryptoUtils.verifyBytes(
         bytes: result.hashedOperationBytes,
         signature: result.signature,
-        publicKey: publicKey2.base58CheckRepresentation
+        publicKey: publicKey2
       )
     )
     XCTAssertFalse(
       TezosCryptoUtils.verifyBytes(
         bytes: result.hashedOperationBytes,
         signature: [1, 2, 3],
-        publicKey: publicKey1.base58CheckRepresentation
+        publicKey: publicKey1
       )
     )
   }
