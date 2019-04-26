@@ -14,7 +14,7 @@ public struct PublicKey {
 
   /// Base58Check representation of the key, prefixed with 'edpk'.
   public var base58CheckRepresentation: String {
-    return TezosCryptoUtils.encode(message: bytes, prefix: Prefix.Keys.public)!
+    return Base58.encode(message: bytes, prefix: Prefix.Keys.public)!
   }
 
   /// Public key hash representation of the key.
@@ -24,7 +24,7 @@ public struct PublicKey {
     guard let hash = sodium.genericHash.hash(message: bytes, key: [], outputLength: 20) else {
       return ""
     }
-    return TezosCryptoUtils.encode(message: hash, prefix: Prefix.Address.tz1)!
+    return Base58.encode(message: hash, prefix: Prefix.Address.tz1)!
   }
 
   /// Initialize a key with the given bytes and signing curve.
@@ -37,12 +37,10 @@ public struct PublicKey {
   ///
   /// The string must begin with 'edpk'.
   public init?(string: String, signingCurve: EllipticalCurve) {
-    // TODO: Refactor this to be a function on Base58Swift.
-    guard let bytes = Base58.base58CheckDecode(string),
-      bytes.prefix(Prefix.Keys.public.count).elementsEqual(Prefix.Keys.public) else {
-        return nil
+    guard let bytes = Base58.base58CheckDecodeWithPrefix(string: string, prefix: Prefix.Keys.public) else {
+      return nil
     }
-    self.init(bytes: Array(bytes.suffix(from: Prefix.Keys.public.count)), signingCurve: signingCurve)
+    self.init(bytes: bytes, signingCurve: signingCurve)
   }
 
   /// Initialize a key from the given secret key with the given signing curve.

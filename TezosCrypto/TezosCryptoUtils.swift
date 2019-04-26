@@ -61,12 +61,4 @@ public enum TezosCryptoUtils {
       signature: signature
     )
   }
-
-  /// Encode a Base58 String from the given message and prefix.
-  ///
-  /// The returned address is a Base58 encoded String with the following format: [prefix][key][4 byte checksum]
-  public static func encode(message: [UInt8], prefix: [UInt8]) -> String? {
-    let prefixedMessage = prefix + message
-    return Base58.base58CheckEncode(prefixedMessage)
-  }
 }

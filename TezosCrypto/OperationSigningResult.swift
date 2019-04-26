@@ -1,5 +1,6 @@
 // Copyright Keefer Taylor, 2019
 
+import Base58Swift
 import Foundation
 import Sodium
 
@@ -25,7 +26,7 @@ public struct OperationSigningResult {
   ///   - signature: The signature of the operation.
   public init?(operationBytes: [UInt8], hashedOperationBytes: [UInt8], signature: [UInt8]) {
     let sodium = Sodium()
-    guard let edsig = TezosCryptoUtils.encode(message: signature, prefix: Prefix.Sign.operation),
+    guard let edsig = Base58.encode(message: signature, prefix: Prefix.Sign.operation),
           let operationBytesHex = sodium.utils.bin2hex(operationBytes),
           let signatureHex = sodium.utils.bin2hex(signature) else {
       return nil

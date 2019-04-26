@@ -13,7 +13,7 @@ public struct SecretKey {
   /// Base58Check representation of the key, prefixed with 'espk'.
   public var base58CheckRepresentation: String {
     // TODO: Don't force unwrap
-    return TezosCryptoUtils.encode(message: bytes, prefix: Prefix.Keys.secret)!
+    return Base58.encode(message: bytes, prefix: Prefix.Keys.secret)!
   }
 
   /// Initialize a key with the given mnemonic and passphrase.
@@ -45,12 +45,10 @@ public struct SecretKey {
   ///
   /// The string must begin with 'edsk'.
   public init?(_ string: String) {
-    // TODO: Refactor this to be a function on Base58Swift.
-    guard let bytes = Base58.base58CheckDecode(string),
-          bytes.prefix(Prefix.Keys.secret.count).elementsEqual(Prefix.Keys.secret) else {
+    guard let bytes = Base58.base58CheckDecodeWithPrefix(string: string, prefix: Prefix.Keys.secret) else {
       return nil
     }
-    self.init(Array(bytes.suffix(from: Prefix.Keys.secret.count)))
+    self.init(bytes)
   }
 
   /// Initialize a key with the given bytes.
