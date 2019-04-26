@@ -12,8 +12,7 @@ public struct SecretKey {
 
   /// Base58Check representation of the key, prefixed with 'espk'.
   public var base58CheckRepresentation: String {
-    // TODO: Don't force unwrap
-    return Base58.encode(message: bytes, prefix: Prefix.Keys.secret)!
+    return Base58.encode(message: bytes, prefix: Prefix.Keys.secret)
   }
 
   /// Initialize a key with the given mnemonic and passphrase.

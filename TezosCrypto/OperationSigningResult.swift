@@ -26,11 +26,11 @@ public struct SigningResult {
   ///   - hashedBytes: The hashed bytes which were signed.
   ///   - signature: The signature from the bytes.
   public init?(bytes: [UInt8], hashedBytes: [UInt8], signature: [UInt8]) {
-    guard let edsig = Base58.encode(message: signature, prefix: Prefix.Sign.operation),
-          let bytesHex = Sodium.shared.utils.bin2hex(bytes),
+    guard let bytesHex = Sodium.shared.utils.bin2hex(bytes),
           let signatureHex = Sodium.shared.utils.bin2hex(signature) else {
       return nil
     }
+    let edsig = Base58.encode(message: signature, prefix: Prefix.Sign.operation)
 
     self.bytes = bytes
     self.hashedBytes = hashedBytes

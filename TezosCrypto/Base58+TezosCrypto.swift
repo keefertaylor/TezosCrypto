@@ -1,14 +1,14 @@
 // Copyright Keefer Taylor, 2019.
 
-import Foundation
 import Base58Swift
+import Foundation
 
 /// Helper functions on Base58Swift for TezosCrypto
 extension Base58 {
   /// Encode a Base58Check string from the given message and prefix.
   ///
   /// The returned address is a Base58 encoded String with the following format: [prefix][key][4 byte checksum]
-  public static func encode(message: [UInt8], prefix: [UInt8]) -> String? {
+  public static func encode(message: [UInt8], prefix: [UInt8]) -> String {
     let prefixedMessage = prefix + message
     return Base58.base58CheckEncode(prefixedMessage)
   }

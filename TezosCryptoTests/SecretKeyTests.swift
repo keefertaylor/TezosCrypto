@@ -47,4 +47,3 @@ final class SecretKeyTests: XCTestCase {
     XCTAssertNil(SecretKey(seedString: invalidSeedString))
   }
 }
-

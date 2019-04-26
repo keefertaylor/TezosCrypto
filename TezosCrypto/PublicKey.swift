@@ -14,15 +14,20 @@ public struct PublicKey {
 
   /// Base58Check representation of the key, prefixed with 'edpk'.
   public var base58CheckRepresentation: String {
-    return Base58.encode(message: bytes, prefix: Prefix.Keys.public)!
+    return Base58.encode(message: bytes, prefix: Prefix.Keys.public)
   }
 
   /// Public key hash representation of the key.
   public var publicKeyHash: String {
-    guard let hash = Sodium.shared.genericHash.hash(message: bytes, key: [], outputLength: 20) else {
-      return ""
+    // swiftlint:disable force_unwrapping
+    // Hashing should never fail on a valid public key.
+    let hash = Sodium.shared.genericHash.hash(message: bytes, outputLength: 20)!
+    // swiftlint:enable force_unwrapping
+
+    switch signingCurve {
+    case .ed25519:
+      return Base58.encode(message: hash, prefix: Prefix.Address.tz1)
     }
-    return Base58.encode(message: hash, prefix: Prefix.Address.tz1)!
   }
 
   /// Initialize a key with the given bytes and signing curve.

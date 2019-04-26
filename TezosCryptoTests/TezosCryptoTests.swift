@@ -18,11 +18,10 @@ class TezosCryptoTests: XCTestCase {
     XCTAssertFalse(TezosCryptoUtils.validateAddress(address: nonBase58Address))
   }
 
-  let secretKeyBase58 = "edskS4pbuA7rwMjsZGmHU18aMP96VmjegxBzwMZs3DrcXHcMV7VyfQLkD5pqEE84wAMHzi8oVZF6wbgxv3FKzg7cLqzURjaXUp"
   public func testVerifyBytes() {
     let fakeOperation = "123456"
     guard let secretKey1 = SecretKey(mnemonic: .mnemonic),
-          let secretKey2 = SecretKey(mnemonic: "soccer soccer number muscle police corn couch bitter gorilla camp camera shove expire praise pill") else {
+          let secretKey2 = SecretKey(mnemonic: "soccer soccer soccer soccer soccer soccer soccer soccer soccer") else {
         XCTFail()
         return
     }
