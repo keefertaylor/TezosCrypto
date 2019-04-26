@@ -5,8 +5,11 @@ import Sodium
 
 /// A property bag representing various artifacts from signing an operation.
 public struct OperationSigningResult {
-  /// The hashed operation bytes which were produced via hashing and signed.
+  /// The original operation bytes which were signed.
   public let operationBytes: [UInt8]
+
+  /// The hashed operation bytes which were produced via hashing and signed.
+  public let hashedOperationBytes: [UInt8]
 
   /// The signature of the signed bytes.
   public let signature: [UInt8]
@@ -20,7 +23,7 @@ public struct OperationSigningResult {
   /// - Parameters:
   ///   - operationBytes: The bytes that comprised the operation.
   ///   - signature: The signature of the operation.
-  public init?(operationBytes: [UInt8], signature: [UInt8]) {
+  public init?(operationBytes: [UInt8], hashedOperationBytes: [UInt8], signature: [UInt8]) {
     let sodium = Sodium()
     guard let edsig = TezosCryptoUtils.encode(message: signature, prefix: Prefix.Sign.operation),
           let operationBytesHex = sodium.utils.bin2hex(operationBytes),
@@ -29,6 +32,7 @@ public struct OperationSigningResult {
     }
 
     self.operationBytes = operationBytes
+    self.hashedOperationBytes = hashedOperationBytes
     self.signature = signature
     self.injectableHexBytes = operationBytesHex + signatureHex
     self.base58Representation = edsig

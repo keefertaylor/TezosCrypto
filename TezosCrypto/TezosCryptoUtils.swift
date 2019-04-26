@@ -50,12 +50,16 @@ public enum TezosCryptoUtils {
     }
     let watermarkedOperation = Prefix.Watermark.operation + operationBytes
 
-    guard  let hashedOperation = sodium.genericHash.hash(message: watermarkedOperation, outputLength: 32),
-      let signature = sodium.sign.signature(message: hashedOperation, secretKey: secretKey.bytes) else {
+    guard let hashedOperationBytes = sodium.genericHash.hash(message: watermarkedOperation, outputLength: 32),
+          let signature = sodium.sign.signature(message: hashedOperationBytes, secretKey: secretKey.bytes) else {
         return nil
     }
 
-    return OperationSigningResult(operationBytes: operationBytes, signature: signature)
+    return OperationSigningResult(
+      operationBytes: operationBytes,
+      hashedOperationBytes: hashedOperationBytes,
+      signature: signature
+    )
   }
 
   /// Encode a Base58 String from the given message and prefix.
