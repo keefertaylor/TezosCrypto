@@ -4,16 +4,6 @@ import TezosCrypto
 import XCTest
 
 class TezosCryptoTests: XCTestCase {
-  private let mnemonic =
-    "soccer click number muscle police corn couch bitter gorilla camp camera shove expire praise pill"
-  private let passphrase = "TezosKitTest"
-
-  // Expected outputs for a wallet without a passphrase.
-  let expectedPublicKeyNoPassphrase = "edpku9ZF6UUAEo1AL3NWy1oxHLL6AfQcGYwA5hFKrEKVHMT3Xx889A"
-  let expectedSecretKeyNoPassphrase =
-    "edskS4pbuA7rwMjsZGmHU18aMP96VmjegxBzwMZs3DrcXHcMV7VyfQLkD5pqEE84wAMHzi8oVZF6wbgxv3FKzg7cLqzURjaXUp"
-  let expectedPublicKeyHashNoPassphrase = "tz1Y3qqTg9HdrzZGbEjiCPmwuZ7fWVxpPtRw"
-
   public func testValidateAddress() {
     let validAddress = "tz1PnyUZjRTFdYbYcJFenMwZanXtVP17scPH"
     let validOriginatedAddress = "KT1Agon3ARPS7U74UedWpR96j1CCbPCsSTsL"
@@ -74,7 +64,7 @@ class TezosCryptoTests: XCTestCase {
     let operation = "deadbeef"
     guard let result = TezosCryptoUtils.signForgedOperation(
       operation: operation,
-      secretKey: expectedSecretKeyNoPassphrase
+      secretKey: .expectedSecretKey
     ) else {
       XCTFail()
       return

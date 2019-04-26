@@ -36,12 +36,15 @@ final class SecretKeyTests: XCTestCase {
     )
   }
 
-  // TODO: Test invalid mnemonic
-  // TODO: Test invalid hex seed string
+  func testInvalidMnemonic() {
+    let invalidMnemonic =
+      "TezosKit TezosKit TezosKit TezosKit TezosKit TezosKit TezosKit TezosKit TezosKit TezosKit TezosKit"
+    XCTAssertNil(SecretKey(mnemonic: invalidMnemonic))
+  }
+
+  func testInvalidSeedString() {
+    let invalidSeedString = "abcdefghijklmnopqrstuvwxyz"
+    XCTAssertNil(SecretKey(seedString: invalidSeedString))
+  }
 }
 
-// TODO: Refactor generally.
-extension String {
-  public static let mnemonic =
-    "soccer click number muscle police corn couch bitter gorilla camp camera shove expire praise pill"
-}

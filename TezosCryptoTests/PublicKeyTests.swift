@@ -31,7 +31,7 @@ final class PublicKeyTests: XCTestCase {
     )
   }
 
-  func testInitFromBase58CheckRepresntation_ValidString() {
+  func testInitFromBase58CheckRepresentation_ValidString() {
     let publicKeyFromString =
       PublicKey(string: "edpku9ZF6UUAEo1AL3NWy1oxHLL6AfQcGYwA5hFKrEKVHMT3Xx889A", signingCurve: .ed25519)
     XCTAssertNotNil(publicKeyFromString)
@@ -45,7 +45,7 @@ final class PublicKeyTests: XCTestCase {
     XCTAssertEqual(publicKeyFromString, publicKeyFromSecretKey)
   }
 
-  func testInitFromBase58CheckRepresntation_InvalidBase58() {
+  func testInitFromBase58CheckRepresentation_InvalidBase58() {
     XCTAssertNil(
       PublicKey(string: "edsko0O", signingCurve: .ed25519)
     )
