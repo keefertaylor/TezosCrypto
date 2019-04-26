@@ -19,9 +19,7 @@ public struct PublicKey {
 
   /// Public key hash representation of the key.
   public var publicKeyHash: String {
-    // TODO: Use a sodium singleton
-    let sodium = Sodium()
-    guard let hash = sodium.genericHash.hash(message: bytes, key: [], outputLength: 20) else {
+    guard let hash = Sodium.shared.genericHash.hash(message: bytes, key: [], outputLength: 20) else {
       return ""
     }
     return Base58.encode(message: hash, prefix: Prefix.Address.tz1)!

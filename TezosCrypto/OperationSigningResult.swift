@@ -25,10 +25,9 @@ public struct OperationSigningResult {
   ///   - operationBytes: The bytes that comprised the operation.
   ///   - signature: The signature of the operation.
   public init?(operationBytes: [UInt8], hashedOperationBytes: [UInt8], signature: [UInt8]) {
-    let sodium = Sodium()
     guard let edsig = Base58.encode(message: signature, prefix: Prefix.Sign.operation),
-          let operationBytesHex = sodium.utils.bin2hex(operationBytes),
-          let signatureHex = sodium.utils.bin2hex(signature) else {
+          let operationBytesHex = Sodium.shared.utils.bin2hex(operationBytes),
+          let signatureHex = Sodium.shared.utils.bin2hex(signature) else {
       return nil
     }
 

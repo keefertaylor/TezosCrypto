@@ -8,8 +8,6 @@ import Sodium
 
 /// A static helper class that provides utility functions for cyptography.
 public enum TezosCryptoUtils {
-  private static let sodium: Sodium = Sodium()
-
   /// Check that a given address is valid public key hash address.
   public static func validateAddress(address: String) -> Bool {
     // Decode bytes. This call verifies the checksum is correct.
@@ -31,7 +29,7 @@ public enum TezosCryptoUtils {
     guard let publicKey = PublicKey(string: publicKey, signingCurve: .ed25519) else {
       return false
     }
-    return sodium.sign.verify(message: bytes, publicKey: publicKey.bytes, signature: signature)
+    return Sodium.shared.sign.verify(message: bytes, publicKey: publicKey.bytes, signature: signature)
   }
 
   /// Sign a forged operation with the given secret key.
@@ -45,13 +43,13 @@ public enum TezosCryptoUtils {
     secretKey: String
   ) -> OperationSigningResult? {
     guard let secretKey = SecretKey(secretKey),
-          let operationBytes = sodium.utils.hex2bin(operation) else {
+          let operationBytes = Sodium.shared.utils.hex2bin(operation) else {
       return nil
     }
     let watermarkedOperation = Prefix.Watermark.operation + operationBytes
 
-    guard let hashedOperationBytes = sodium.genericHash.hash(message: watermarkedOperation, outputLength: 32),
-          let signature = sodium.sign.signature(message: hashedOperationBytes, secretKey: secretKey.bytes) else {
+    guard let hashedOperationBytes = Sodium.shared.genericHash.hash(message: watermarkedOperation, outputLength: 32),
+          let signature = Sodium.shared.sign.signature(message: hashedOperationBytes, secretKey: secretKey.bytes) else {
         return nil
     }
 

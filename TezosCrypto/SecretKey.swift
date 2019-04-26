@@ -33,9 +33,8 @@ public struct SecretKey {
   ///
   /// - Returns: A representative secret key, or nil if the seed string was in an unexpected format.
   public init?(seedString: String) {
-    let sodium = Sodium()
-    guard let seed = sodium.utils.hex2bin(seedString),
-          let keyPair = sodium.sign.keyPair(seed: seed) else {
+    guard let seed = Sodium.shared.utils.hex2bin(seedString),
+          let keyPair = Sodium.shared.sign.keyPair(seed: seed) else {
             return nil
     }
     self.init(keyPair.secretKey)
