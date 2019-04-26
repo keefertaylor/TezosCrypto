@@ -4,7 +4,7 @@ import Base58Swift
 import Foundation
 import Sodium
 
-/// A property bag representing various artifacts from signing an bytes.
+/// A property bag representing various artifacts from signing bytes.
 public struct SigningResult {
   /// The original bytes which were signed.
   public let bytes: [UInt8]
