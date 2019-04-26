@@ -4,42 +4,43 @@ import Base58Swift
 import Foundation
 import Sodium
 
-/// A property bag representing various artifacts from signing an operation.
-public struct OperationSigningResult {
-  /// The original operation bytes which were signed.
-  public let operationBytes: [UInt8]
+/// A property bag representing various artifacts from signing an bytes.
+public struct SigningResult {
+  /// The original bytes which were signed.
+  public let bytes: [UInt8]
 
-  /// The hashed operation bytes which were produced via hashing and signed.
-  public let hashedOperationBytes: [UInt8]
+  /// The hashed bytes which were produced via hashing and signed.
+  public let hashedBytes: [UInt8]
 
-  /// The signature of the signed bytes.
+  /// The signature of the hashed bytes.
   public let signature: [UInt8]
 
   /// The base58check encoded version of the signature, prefixed with 'edsig'
   public var base58Representation: String
 
-  /// The operation string concatenated with a hex encoded signature.
+  /// The original bytes concatenated with their signature in hex.
   public let injectableHexBytes: String
 
   /// - Parameters:
-  ///   - operationBytes: The bytes that comprised the operation.
-  ///   - signature: The signature of the operation.
-  public init?(operationBytes: [UInt8], hashedOperationBytes: [UInt8], signature: [UInt8]) {
+  ///   - bytes: The original bytes.
+  ///   - hashedBytes: The hashed bytes which were signed.
+  ///   - signature: The signature from the bytes.
+  public init?(bytes: [UInt8], hashedBytes: [UInt8], signature: [UInt8]) {
     guard let edsig = Base58.encode(message: signature, prefix: Prefix.Sign.operation),
-          let operationBytesHex = Sodium.shared.utils.bin2hex(operationBytes),
+          let bytesHex = Sodium.shared.utils.bin2hex(bytes),
           let signatureHex = Sodium.shared.utils.bin2hex(signature) else {
       return nil
     }
 
-    self.operationBytes = operationBytes
-    self.hashedOperationBytes = hashedOperationBytes
+    self.bytes = bytes
+    self.hashedBytes = hashedBytes
     self.signature = signature
-    self.injectableHexBytes = operationBytesHex + signatureHex
+    self.injectableHexBytes = bytesHex + signatureHex
     self.base58Representation = edsig
   }
 }
 
-extension OperationSigningResult: CustomStringConvertible {
+extension SigningResult: CustomStringConvertible {
   public var description: String {
     return base58Representation
   }

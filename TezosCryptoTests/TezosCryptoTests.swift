@@ -29,43 +29,25 @@ class TezosCryptoTests: XCTestCase {
     let publicKey1 = PublicKey(secretKey: secretKey1, signingCurve: .ed25519)
     let publicKey2 = PublicKey(secretKey: secretKey2, signingCurve: .ed25519)
 
-    guard let result = TezosCryptoUtils.signForgedOperation(
-      operation: fakeOperation,
-      secretKey: secretKey1.base58CheckRepresentation
-    ) else {
+    guard let result = TezosCryptoUtils.sign(hex: fakeOperation, secretKey: secretKey1) else {
         XCTFail()
         return
     }
 
     XCTAssertTrue(
-      TezosCryptoUtils.verifyBytes(
-        bytes: result.hashedOperationBytes,
-        signature: result.signature,
-        publicKey: publicKey1
-      )
+      TezosCryptoUtils.verifyBytes(bytes: result.hashedBytes, signature: result.signature, publicKey: publicKey1)
     )
     XCTAssertFalse(
-      TezosCryptoUtils.verifyBytes(
-        bytes: result.hashedOperationBytes,
-        signature: result.signature,
-        publicKey: publicKey2
-      )
+      TezosCryptoUtils.verifyBytes(bytes: result.hashedBytes, signature: result.signature, publicKey: publicKey2)
     )
     XCTAssertFalse(
-      TezosCryptoUtils.verifyBytes(
-        bytes: result.hashedOperationBytes,
-        signature: [1, 2, 3],
-        publicKey: publicKey1
-      )
+      TezosCryptoUtils.verifyBytes(bytes: result.hashedBytes, signature: [1, 2, 3], publicKey: publicKey1)
     )
   }
 
   public func testSignForgedOperation() {
-    let operation = "deadbeef"
-    guard let result = TezosCryptoUtils.signForgedOperation(
-      operation: operation,
-      secretKey: .expectedSecretKey
-    ) else {
+    let fakeOperation = "deadbeef"
+    guard let result = TezosCryptoUtils.sign(hex: fakeOperation, secretKey: .testSecretKey) else {
       XCTFail()
       return
     }
@@ -90,5 +72,10 @@ class TezosCryptoTests: XCTestCase {
       result.base58Representation,
       "edsigu13UN5tAjQsxaLmXL7vCXM9BRggVDygne5LDZs7fHNH61PXfgbmXaAAq63GR8gqgeqa3aYNH4dnv18LdHaSCetC9sSJUCF"
     )
+  }
+
+  public func testSignForgedOperation_InvalidString() {
+    let invalidHexString = "abcdefghijklmnopqrstuvwxyz"
+    XCTAssertNil(TezosCryptoUtils.sign(hex: invalidHexString, secretKey: .testSecretKey))
   }
 }

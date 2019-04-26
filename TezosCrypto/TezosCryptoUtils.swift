@@ -37,31 +37,32 @@ public enum TezosCryptoUtils {
     }
   }
 
-  /// Sign a forged operation with the given secret key.
+  /// Sign the given hex encoded string with the given key.
   ///
   /// - Parameters:
-  ///   - operation A hex encoded string representing the forged operation
-  ///   - secretKey A base58check encoded secret key prefixed with 'edsk' which will sign the operation.
-  /// - Returns: A OperationSigningResult with the results of the signing if successful, otherwise nil.
-  public static func signForgedOperation(
-    operation: String,
-    secretKey: String
-  ) -> OperationSigningResult? {
-    guard let secretKey = SecretKey(secretKey),
-          let operationBytes = Sodium.shared.utils.hex2bin(operation) else {
+  ///   - hex: The hex string to sign.
+  ///   - secretKey: The secret key to sign with.
+  /// - Returns: A property bag of artifacts from the signing operation.
+  public static func sign(hex: String, secretKey: SecretKey) -> SigningResult? {
+    guard let bytes = Sodium.shared.utils.hex2bin(hex) else {
       return nil
     }
-    let watermarkedOperation = Prefix.Watermark.operation + operationBytes
+    return self.sign(bytes: bytes, secretKey: secretKey)
+  }
 
-    guard let hashedOperationBytes = Sodium.shared.genericHash.hash(message: watermarkedOperation, outputLength: 32),
-          let signature = Sodium.shared.sign.signature(message: hashedOperationBytes, secretKey: secretKey.bytes) else {
+  /// Sign the given hex encoded string with the given key.
+  ///
+  /// - Parameters:
+  ///   - hex: The hex string to sign.
+  ///   - secretKey: The secret key to sign with.
+  /// - Returns: A property bag of artifacts from the signing operation.
+  public static func sign(bytes: [UInt8], secretKey: SecretKey) -> SigningResult? {
+    let watermarkedOperation = Prefix.Watermark.operation + bytes
+
+    guard let hashedBytes = Sodium.shared.genericHash.hash(message: watermarkedOperation, outputLength: 32),
+          let signature = Sodium.shared.sign.signature(message: hashedBytes, secretKey: secretKey.bytes) else {
         return nil
     }
-
-    return OperationSigningResult(
-      operationBytes: operationBytes,
-      hashedOperationBytes: hashedOperationBytes,
-      signature: signature
-    )
+    return SigningResult(bytes: bytes, hashedBytes: hashedBytes, signature: signature)
   }
 }
