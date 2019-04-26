@@ -30,4 +30,24 @@ final class PublicKeyTests: XCTestCase {
       "tz1Y3qqTg9HdrzZGbEjiCPmwuZ7fWVxpPtRw"
     )
   }
+
+  func testInitFromBase58CheckRepresntation_ValidString() {
+    let publicKeyFromString =
+      PublicKey(string: "edpku9ZF6UUAEo1AL3NWy1oxHLL6AfQcGYwA5hFKrEKVHMT3Xx889A", signingCurve: .ed25519)
+    XCTAssertNotNil(publicKeyFromString)
+
+    guard let secretKey = SecretKey(mnemonic: .mnemonic) else {
+      XCTFail()
+      return
+    }
+    let publicKeyFromSecretKey = PublicKey(secretKey: secretKey, signingCurve: .ed25519)
+
+    XCTAssertEqual(publicKeyFromString, publicKeyFromSecretKey)
+  }
+
+  func testInitFromBase58CheckRepresntation_InvalidBase58() {
+    XCTAssertNil(
+      PublicKey(string: "edsko0O", signingCurve: .ed25519)
+    )
+  }
 }

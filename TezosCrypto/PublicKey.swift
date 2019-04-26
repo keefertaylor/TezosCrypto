@@ -1,5 +1,6 @@
 // Copyright Keefer Taylor, 2019.
 
+import Base58Swift
 import Foundation
 import Sodium
 
@@ -32,6 +33,18 @@ public struct PublicKey {
     self.signingCurve = signingCurve
   }
 
+  /// Initialize a public key with the given base58check encoded string.
+  ///
+  /// The string must begin with 'edpk'.
+  public init?(string: String, signingCurve: EllipticalCurve) {
+    // TODO: Refactor this to be a function on Base58Swift.
+    guard let bytes = Base58.base58CheckDecode(string),
+      bytes.prefix(Prefix.Keys.public.count).elementsEqual(Prefix.Keys.public) else {
+        return nil
+    }
+    self.init(bytes: Array(bytes.suffix(from: Prefix.Keys.public.count)), signingCurve: signingCurve)
+  }
+
   /// Initialize a key from the given secret key with the given signing curve.
   public init(secretKey: SecretKey, signingCurve: EllipticalCurve) {
     self.bytes = Array(secretKey.bytes[32...])
@@ -46,4 +59,7 @@ extension PublicKey: CustomStringConvertible {
 }
 
 extension PublicKey: Equatable {
+  public static func == (lhs: PublicKey, rhs: PublicKey) -> Bool {
+    return lhs.base58CheckRepresentation == rhs.base58CheckRepresentation
+  }
 }

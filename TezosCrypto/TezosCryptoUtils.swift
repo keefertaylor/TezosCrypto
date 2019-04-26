@@ -28,10 +28,10 @@ public enum TezosCryptoUtils {
   /// Verify that the given signature is a signed version of the given bytes by the secret key associated with the given
   /// public key.
   public static func verifyBytes(bytes: [UInt8], signature: [UInt8], publicKey: String) -> Bool {
-    guard let decodedPublicKeyBytes = self.decodedKey(from: publicKey, prefix: Prefix.Keys.public) else {
+    guard let publicKey = PublicKey(string: publicKey, signingCurve: .ed25519) else {
       return false
     }
-    return sodium.sign.verify(message: bytes, publicKey: decodedPublicKeyBytes, signature: signature)
+    return sodium.sign.verify(message: bytes, publicKey: publicKey.bytes, signature: signature)
   }
 
   /// Sign a forged operation with the given secret key.
@@ -44,14 +44,14 @@ public enum TezosCryptoUtils {
     operation: String,
     secretKey: String
   ) -> OperationSigningResult? {
-    guard let decodedSecretKeyBytes = self.decodedKey(from: secretKey, prefix: Prefix.Keys.secret),
+    guard let secretKey = SecretKey(secretKey),
           let operationBytes = sodium.utils.hex2bin(operation) else {
       return nil
     }
     let watermarkedOperation = Prefix.Watermark.operation + operationBytes
 
     guard  let hashedOperation = sodium.genericHash.hash(message: watermarkedOperation, outputLength: 32),
-      let signature = sodium.sign.signature(message: hashedOperation, secretKey: decodedSecretKeyBytes) else {
+      let signature = sodium.sign.signature(message: hashedOperation, secretKey: secretKey.bytes) else {
         return nil
     }
 
@@ -64,25 +64,5 @@ public enum TezosCryptoUtils {
   public static func encode(message: [UInt8], prefix: [UInt8]) -> String? {
     let prefixedMessage = prefix + message
     return Base58.base58CheckEncode(prefixedMessage)
-  }
-
-  /// Decode an original key from the Base58 encoded key containing a prefix and checksum.
-  private static func decodedKey(from encodedKey: String, prefix: [UInt8]) -> [UInt8]? {
-    guard var decodedBytes = Base58.base58CheckDecode(encodedKey) else {
-      return nil
-    }
-
-    // Decoded key will have extra bytes at the beginning for the prefix. Drop these bytes in order to get the original
-    // key.
-    decodedBytes.removeSubrange(0 ..< prefix.count)
-    return decodedBytes
-  }
-
-  /// Extract a bytes for a public key from a given base58check encoded secret key prefixed with "edsk".
-  public static func extractPublicKeyBytes(secretKey: String) -> [UInt8]? {
-    guard let decodedSecretKeyBytes = self.decodedKey(from: secretKey, prefix: Prefix.Keys.secret) else {
-      return nil
-    }
-    return Array(decodedSecretKeyBytes[32...])
   }
 }

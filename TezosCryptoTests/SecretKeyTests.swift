@@ -17,6 +17,25 @@ final class SecretKeyTests: XCTestCase {
     )
   }
 
+  func testInitFromBase58CheckRepresntation_ValidString() {
+    let secretKeyFromString =
+      SecretKey("edskS4pbuA7rwMjsZGmHU18aMP96VmjegxBzwMZs3DrcXHcMV7VyfQLkD5pqEE84wAMHzi8oVZF6wbgxv3FKzg7cLqzURjaXUp")
+    XCTAssertNotNil(secretKeyFromString)
+
+    guard let secretKeyFromMnemonic = SecretKey(mnemonic: .mnemonic) else {
+      XCTFail()
+      return
+    }
+
+    XCTAssertEqual(secretKeyFromString, secretKeyFromMnemonic)
+  }
+
+  func testInitFromBase58CheckRepresntation_InvalidBase58() {
+    XCTAssertNil(
+      SecretKey("edsko0O")
+    )
+  }
+
   // TODO: Test invalid mnemonic
   // TODO: Test invalid hex seed string
 }

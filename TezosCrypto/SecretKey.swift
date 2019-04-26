@@ -1,5 +1,6 @@
 // Copyright Keefer Taylor, 2019
 
+import Base58Swift
 import Foundation
 import MnemonicKit
 import Sodium
@@ -40,6 +41,18 @@ public struct SecretKey {
     self.init(keyPair.secretKey)
   }
 
+  /// Initialize a secret key with the given base58check encoded string.
+  ///
+  /// The string must begin with 'edsk'.
+  public init?(_ string: String) {
+    // TODO: Refactor this to be a function on Base58Swift.
+    guard let bytes = Base58.base58CheckDecode(string),
+          bytes.prefix(Prefix.Keys.secret.count).elementsEqual(Prefix.Keys.secret) else {
+      return nil
+    }
+    self.init(Array(bytes.suffix(from: Prefix.Keys.secret.count)))
+  }
+
   /// Initialize a key with the given bytes.
   public init(_ bytes: [UInt8]) {
     self.bytes = bytes
@@ -49,5 +62,11 @@ public struct SecretKey {
 extension SecretKey: CustomStringConvertible {
   public var description: String {
     return base58CheckRepresentation
+  }
+}
+
+extension SecretKey: Equatable {
+  public static func == (lhs: SecretKey, rhs: SecretKey) -> Bool {
+    return lhs.base58CheckRepresentation == rhs.base58CheckRepresentation
   }
 }
