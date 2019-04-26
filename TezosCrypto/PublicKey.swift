@@ -44,3 +44,6 @@ extension PublicKey: CustomStringConvertible {
     return base58CheckRepresentation
   }
 }
+
+extension PublicKey: Equatable {
+}

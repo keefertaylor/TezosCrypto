@@ -5,7 +5,7 @@ import Sodium
 
 /// Generic KeyPair protocol containing private and public keys.
 public protocol KeyPair {
-  var `public`: [UInt8] { get }
+  var `public`: TezosCrypto.PublicKey { get }
   var secret: TezosCrypto.SecretKey { get }
 }
 
@@ -15,7 +15,7 @@ extension Sign.KeyPair: KeyPair {
     return TezosCrypto.SecretKey(secretKey)
   }
 
-  public var `public`: [UInt8] {
-    return publicKey
+  public var `public`: TezosCrypto.PublicKey {
+    return TezosCrypto.PublicKey(bytes: publicKey, signingCurve: .ed25519)
   }
 }

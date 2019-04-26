@@ -4,23 +4,23 @@ import TezosCrypto
 import XCTest
 
 class TezosCryptoTests: XCTestCase {
-  private let mnemonic =
-    "soccer click number muscle police corn couch bitter gorilla camp camera shove expire praise pill"
-  private let passphrase = "TezosKitTest"
-
-  // Expected outputs for a wallet without a passphrase.
-  let expectedPublicKeyNoPassphrase = "edpku9ZF6UUAEo1AL3NWy1oxHLL6AfQcGYwA5hFKrEKVHMT3Xx889A"
-  let expectedSecretKeyNoPassphrase =
-    "edskS4pbuA7rwMjsZGmHU18aMP96VmjegxBzwMZs3DrcXHcMV7VyfQLkD5pqEE84wAMHzi8oVZF6wbgxv3FKzg7cLqzURjaXUp"
-  let expectedPublicKeyHashNoPassphrase = "tz1Y3qqTg9HdrzZGbEjiCPmwuZ7fWVxpPtRw"
-
-  public func testExtractPublicKey() {
-    guard let key = TezosCrypto.extractPublicKey(secretKey: expectedSecretKeyNoPassphrase) else {
-      XCTFail()
-      return
-    }
-    XCTAssertEqual(key, expectedPublicKeyNoPassphrase)
-  }
+//  private let mnemonic =
+//    "soccer click number muscle police corn couch bitter gorilla camp camera shove expire praise pill"
+//  private let passphrase = "TezosKitTest"
+//
+//  // Expected outputs for a wallet without a passphrase.
+//  let expectedPublicKeyNoPassphrase = "edpku9ZF6UUAEo1AL3NWy1oxHLL6AfQcGYwA5hFKrEKVHMT3Xx889A"
+//  let expectedSecretKeyNoPassphrase =
+//    "edskS4pbuA7rwMjsZGmHU18aMP96VmjegxBzwMZs3DrcXHcMV7VyfQLkD5pqEE84wAMHzi8oVZF6wbgxv3FKzg7cLqzURjaXUp"
+//  let expectedPublicKeyHashNoPassphrase = "tz1Y3qqTg9HdrzZGbEjiCPmwuZ7fWVxpPtRw"
+//
+//  public func testExtractPublicKey() {
+//    guard let key = TezosCrypto.extractPublicKey(secretKey: expectedSecretKeyNoPassphrase) else {
+//      XCTFail()
+//      return
+//    }
+//    XCTAssertEqual(key, expectedPublicKeyNoPassphrase)
+//  }
 //
 //  public func testExtractPublicKeyHash() {
 //    guard let key = TezosCrypto.extractPublicKeyHash(secretKey: expectedSecretKeyNoPassphrase) else {
