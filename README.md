@@ -32,7 +32,7 @@ TezosCrypto to your `Cartfile`:
 github "keefertaylor/TezosCrypto"
 ```
 
-If you use Carthage to build your dependencies, make sure you have added `Sodium.framework`, `BitInt.framework`, `CryptoSwift.framework`, and `SipHash.framework` to the "_Linked Frameworks and Libraries_" section of your target, and have included them in your Carthage framework copying build phase.
+If you use Carthage to build your dependencies, make sure you have added  `BitInt.framework`, `CryptoSwift.framework`, `MnemonicKit.framework`, `SipHash.framework` and  `Sodium.framework` to the "_Linked Frameworks and Libraries_" section of your target, and have included them in your Carthage framework copying build phase.
 
 ### LibSodium Errors
 
