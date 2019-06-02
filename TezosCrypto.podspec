@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/keefertaylor/TezosCrypto.git", :tag => "2.0.1" }
   s.source_files  = "TezosCrypto/*.swift", "Base58String/*.swift"
   s.swift_version = "4.2"
-  s.ios.deployment_target = "8.0"
-  s.osx.deployment_target = "10.10"
+  s.ios.deployment_target = "10.0"
+  s.osx.deployment_target = "10.14"
 
   s.dependency "Base58Swift", "~> 2.1.0"
   s.dependency "BigInt", "~> 3.1"
