@@ -23,6 +23,20 @@ public enum TezosCryptoUtils {
     return true
   }
 
+  /// Verify that the given signature matches the given input hex.
+  ///
+  /// - Parameters:
+  ///   - hex: The hex to check.
+  ///   - signature: The proposed signature of the bytes.
+  ///   - publicKey: The proposed public key.
+  /// - Returns: True if the public key and signature match the given bytes.
+  public static func verifyHex(_ hex: String, signature: [UInt8], publicKey: PublicKey) -> Bool {
+    guard let bytes = Sodium.shared.utils.hex2bin(hex) else {
+      return false
+    }
+    return verifyBytes(bytes, signature: signature, publicKey: publicKey)
+  }
+
   /// Verify that the given signature matches the given input bytes.
   ///
   /// - Parameters:
@@ -30,10 +44,14 @@ public enum TezosCryptoUtils {
   ///   - signature: The proposed signature of the bytes.
   ///   - publicKey: The proposed public key.
   /// - Returns: True if the public key and signature match the given bytes.
-  public static func verifyBytes(bytes: [UInt8], signature: [UInt8], publicKey: PublicKey) -> Bool {
+  public static func verifyBytes(_ bytes: [UInt8], signature: [UInt8], publicKey: PublicKey) -> Bool {
+    guard let bytesToVerify = prepareBytesForSigning(bytes) else {
+      return false
+    }
+
     switch publicKey.signingCurve {
     case .ed25519:
-      return Sodium.shared.sign.verify(message: bytes, publicKey: publicKey.bytes, signature: signature)
+      return Sodium.shared.sign.verify(message: bytesToVerify, publicKey: publicKey.bytes, signature: signature)
     }
   }
 
@@ -42,8 +60,8 @@ public enum TezosCryptoUtils {
   /// - Parameters:
   ///   - hex: The hex string to sign.
   ///   - secretKey: The secret key to sign with.
-  /// - Returns: A property bag of artifacts from the signing operation.
-  public static func sign(hex: String, secretKey: SecretKey) -> SigningResult? {
+  /// - Returns: A signature from the input.
+  public static func sign(hex: String, secretKey: SecretKey) -> [UInt8]? {
     guard let bytes = Sodium.shared.utils.hex2bin(hex) else {
       return nil
     }
@@ -55,14 +73,18 @@ public enum TezosCryptoUtils {
   /// - Parameters:
   ///   - hex: The hex string to sign.
   ///   - secretKey: The secret key to sign with.
-  /// - Returns: A property bag of artifacts from the signing operation.
-  public static func sign(bytes: [UInt8], secretKey: SecretKey) -> SigningResult? {
-    let watermarkedOperation = Prefix.Watermark.operation + bytes
-
-    guard let hashedBytes = Sodium.shared.genericHash.hash(message: watermarkedOperation, outputLength: 32),
-          let signature = Sodium.shared.sign.signature(message: hashedBytes, secretKey: secretKey.bytes) else {
+  /// - Returns: A signature from the input.
+  public static func sign(bytes: [UInt8], secretKey: SecretKey) -> [UInt8]? {
+    guard let bytesToSign = prepareBytesForSigning(bytes),
+          let signature = Sodium.shared.sign.signature(message: bytesToSign, secretKey: secretKey.bytes) else {
         return nil
     }
-    return SigningResult(bytes: bytes, hashedBytes: hashedBytes, signature: signature)
+    return signature
+  }
+
+  /// Prepare bytes for signing by applying a watermark and hashing.
+  public static func prepareBytesForSigning(_ bytes: [UInt8]) -> [UInt8]? {
+    let watermarkedOperation = Prefix.Watermark.operation + bytes
+    return Sodium.shared.genericHash.hash(message: watermarkedOperation, outputLength: 32)
   }
 }
