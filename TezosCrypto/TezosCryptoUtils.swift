@@ -87,4 +87,32 @@ public enum TezosCryptoUtils {
     let watermarkedOperation = Prefix.Watermark.operation + bytes
     return Sodium.shared.genericHash.hash(message: watermarkedOperation, outputLength: 32)
   }
+
+  /// Convert the given input bytes to hex.
+  public static func binToHex(_ bin: [UInt8]) -> String? {
+    return Sodium.shared.utils.bin2hex(bin)
+  }
+
+  /// Convert the given hex to binary.
+  public static func hexToBin(_ hex: String) -> [UInt8]? {
+    return Sodium.shared.utils.hex2bin(hex)
+  }
+
+  /// Convert signature bytes to their base58 representation.
+  public static func base58(signature: [UInt8]) -> String? {
+    return Base58.encode(message: signature, prefix: TezosCrypto.Prefix.Sign.operation)
+  }
+
+  /// Create injectable hex bytes from the given hex operation and signature bytes
+  public static func injectableHex(_ hex: String, signature: [UInt8]) -> String? {
+    guard let signatureHex = binToHex(signature) else {
+      return nil
+    }
+    return injectableHex(hex, signatureHex: signatureHex)
+  }
+
+  /// Create injectable hex bytes from the given hex operation and a hex signature.
+  public static func injectableHex(_ hex: String, signatureHex: String) -> String {
+    return hex + signatureHex
+  }
 }
