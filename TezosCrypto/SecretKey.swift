@@ -53,6 +53,39 @@ public struct SecretKey {
   public init(_ bytes: [UInt8]) {
     self.bytes = bytes
   }
+
+  /// Sign the given hex encoded string with the given key.
+  ///
+  /// - Parameters:
+  ///   - hex: The hex string to sign.
+  ///   - secretKey: The secret key to sign with.
+  /// - Returns: A signature from the input.
+  public func sign(hex: String) -> [UInt8]? {
+    guard let bytes = Sodium.shared.utils.hex2bin(hex) else {
+      return nil
+    }
+    return self.sign(bytes: bytes)
+  }
+
+  /// Sign the given hex encoded string with the given key.
+  ///
+  /// - Parameters:
+  ///   - hex: The hex string to sign.
+  ///   - secretKey: The secret key to sign with.
+  /// - Returns: A signature from the input.
+  public func sign(bytes: [UInt8]) -> [UInt8]? {
+    guard let bytesToSign = prepareBytesForSigning(bytes),
+      let signature = Sodium.shared.sign.signature(message: bytesToSign, secretKey: self.bytes) else {
+        return nil
+    }
+    return signature
+  }
+
+  /// Prepare bytes for signing by applying a watermark and hashing.
+  private func prepareBytesForSigning(_ bytes: [UInt8]) -> [UInt8]? {
+    let watermarkedOperation = Prefix.Watermark.operation + bytes
+    return Sodium.shared.genericHash.hash(message: watermarkedOperation, outputLength: 32)
+  }
 }
 
 extension SecretKey: CustomStringConvertible {

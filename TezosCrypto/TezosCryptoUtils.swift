@@ -23,46 +23,31 @@ public enum TezosCryptoUtils {
     return true
   }
 
-  /// Verify that the given signature matches the given input bytes.
-  ///
-  /// - Parameters:
-  ///   - bytes: The bytes to check.
-  ///   - signature: The proposed signature of the bytes.
-  ///   - publicKey: The proposed public key.
-  /// - Returns: True if the public key and signature match the given bytes.
-  public static func verifyBytes(bytes: [UInt8], signature: [UInt8], publicKey: PublicKey) -> Bool {
-    switch publicKey.signingCurve {
-    case .ed25519:
-      return Sodium.shared.sign.verify(message: bytes, publicKey: publicKey.bytes, signature: signature)
-    }
+  /// Convert the given input bytes to hex.
+  public static func binToHex(_ bin: [UInt8]) -> String? {
+    return Sodium.shared.utils.bin2hex(bin)
   }
 
-  /// Sign the given hex encoded string with the given key.
-  ///
-  /// - Parameters:
-  ///   - hex: The hex string to sign.
-  ///   - secretKey: The secret key to sign with.
-  /// - Returns: A property bag of artifacts from the signing operation.
-  public static func sign(hex: String, secretKey: SecretKey) -> SigningResult? {
-    guard let bytes = Sodium.shared.utils.hex2bin(hex) else {
+  /// Convert the given hex to binary.
+  public static func hexToBin(_ hex: String) -> [UInt8]? {
+    return Sodium.shared.utils.hex2bin(hex)
+  }
+
+  /// Convert signature bytes to their base58 representation.
+  public static func base58(signature: [UInt8]) -> String? {
+    return Base58.encode(message: signature, prefix: TezosCrypto.Prefix.Sign.signature)
+  }
+
+  /// Create injectable hex bytes from the given hex operation and signature bytes
+  public static func injectableHex(_ hex: String, signature: [UInt8]) -> String? {
+    guard let signatureHex = binToHex(signature) else {
       return nil
     }
-    return self.sign(bytes: bytes, secretKey: secretKey)
+    return injectableHex(hex, signatureHex: signatureHex)
   }
 
-  /// Sign the given hex encoded string with the given key.
-  ///
-  /// - Parameters:
-  ///   - hex: The hex string to sign.
-  ///   - secretKey: The secret key to sign with.
-  /// - Returns: A property bag of artifacts from the signing operation.
-  public static func sign(bytes: [UInt8], secretKey: SecretKey) -> SigningResult? {
-    let watermarkedOperation = Prefix.Watermark.operation + bytes
-
-    guard let hashedBytes = Sodium.shared.genericHash.hash(message: watermarkedOperation, outputLength: 32),
-          let signature = Sodium.shared.sign.signature(message: hashedBytes, secretKey: secretKey.bytes) else {
-        return nil
-    }
-    return SigningResult(bytes: bytes, hashedBytes: hashedBytes, signature: signature)
+  /// Create injectable hex bytes from the given hex operation and a hex signature.
+  public static func injectableHex(_ hex: String, signatureHex: String) -> String {
+    return hex + signatureHex
   }
 }
