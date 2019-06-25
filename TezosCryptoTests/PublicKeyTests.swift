@@ -50,4 +50,32 @@ final class PublicKeyTests: XCTestCase {
       PublicKey(string: "edsko0O", signingCurve: .ed25519)
     )
   }
+
+  public func testVerifyHex() {
+    let hexToSign = "123456"
+    guard
+      let secretKey1 = SecretKey(mnemonic: .mnemonic),
+      let secretKey2 = SecretKey(mnemonic: "soccer soccer soccer soccer soccer soccer soccer soccer soccer")
+    else {
+      XCTFail()
+      return
+    }
+    let publicKey1 = PublicKey(secretKey: secretKey1, signingCurve: .ed25519)
+    let publicKey2 = PublicKey(secretKey: secretKey2, signingCurve: .ed25519)
+
+    guard let signature = secretKey1.sign(hex: hexToSign) else {
+      XCTFail()
+      return
+    }
+
+    XCTAssertTrue(
+      publicKey1.verify(signature: signature, hex: hexToSign)
+    )
+    XCTAssertFalse(
+      publicKey2.verify(signature: signature, hex: hexToSign)
+    )
+    XCTAssertFalse(
+      publicKey1.verify(signature: [1, 2, 3], hex: hexToSign)
+    )
+  }
 }

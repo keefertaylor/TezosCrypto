@@ -51,6 +51,44 @@ public struct PublicKey {
     self.bytes = Array(secretKey.bytes[32...])
     self.signingCurve = signingCurve
   }
+
+  /// Verify that the given signature matches the given input hex.
+  ///
+  /// - Parameters:
+  ///   - hex: The hex to check.
+  ///   - signature: The proposed signature of the bytes.
+  ///   - publicKey: The proposed public key.
+  /// - Returns: True if the public key and signature match the given bytes.
+  public func verify(signature: [UInt8], hex: String) -> Bool {
+    guard let bytes = Sodium.shared.utils.hex2bin(hex) else {
+      return false
+    }
+    return verify(signature: signature, bytes: bytes)
+  }
+
+  /// Verify that the given signature matches the given input bytes.
+  ///
+  /// - Parameters:
+  ///   - bytes: The bytes to check.
+  ///   - signature: The proposed signature of the bytes.
+  ///   - publicKey: The proposed public key.
+  /// - Returns: True if the public key and signature match the given bytes.
+  public func verify(signature: [UInt8], bytes: [UInt8]) -> Bool {
+    guard let bytesToVerify = prepareBytesForVerification(bytes) else {
+      return false
+    }
+
+    switch signingCurve {
+    case .ed25519:
+      return Sodium.shared.sign.verify(message: bytesToVerify, publicKey: self.bytes, signature: signature)
+    }
+  }
+
+  /// Prepare bytes for verification by applying a watermark and hashing.
+  private func prepareBytesForVerification(_ bytes: [UInt8]) -> [UInt8]? {
+    let watermarkedOperation = Prefix.Watermark.operation + bytes
+    return Sodium.shared.genericHash.hash(message: watermarkedOperation, outputLength: 32)
+  }
 }
 
 extension PublicKey: CustomStringConvertible {

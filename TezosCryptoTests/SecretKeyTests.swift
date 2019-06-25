@@ -30,7 +30,7 @@ final class SecretKeyTests: XCTestCase {
     XCTAssertEqual(secretKeyFromString, secretKeyFromMnemonic)
   }
 
-  func testInitFromBase58CheckRepresntation_InvalidBase58() {
+  func testInitFromBase58CheckRepresentation_InvalidBase58() {
     XCTAssertNil(
       SecretKey("edsko0O")
     )
@@ -45,5 +45,27 @@ final class SecretKeyTests: XCTestCase {
   func testInvalidSeedString() {
     let invalidSeedString = "abcdefghijklmnopqrstuvwxyz"
     XCTAssertNil(SecretKey(seedString: invalidSeedString))
+  }
+
+  public func testSignHex() {
+    let hexToSign = "deadbeef"
+    guard let signature = SecretKey.testSecretKey.sign(hex: hexToSign) else {
+      XCTFail()
+      return
+    }
+
+    XCTAssertEqual(
+      signature,
+      [
+        208, 47, 19, 208, 168, 253, 44, 130, 231, 240, 15, 213, 223, 59, 178, 60, 130, 146, 175, 120, 119, 21, 237, 130,
+        115, 88, 31, 213, 202, 126, 150, 205, 13, 237, 56, 251, 254, 240, 202, 228, 141, 180, 235, 175, 184, 189, 172,
+        121, 43, 25, 235, 97, 235, 140, 144, 168, 32, 75, 190, 101, 126, 99, 117, 13
+      ]
+    )
+  }
+
+  public func testSignHexInvalid() {
+    let invalidHexString = "abcdefghijklmnopqrstuvwxyz"
+    XCTAssertNil(SecretKey.testSecretKey.sign(hex: invalidHexString))
   }
 }
