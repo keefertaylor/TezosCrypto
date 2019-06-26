@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "TezosCrypto"
-  s.version      = "2.0.1"
+  s.version      = "2.1.0"
   s.summary      = "TezosCrypto implements cryptography functions for the Tezos Blockchain."
 
   s.homepage     = "https://github.com/keefertaylor/TezosCrypto"
