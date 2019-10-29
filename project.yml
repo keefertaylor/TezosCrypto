@@ -1,0 +1,26 @@
+name: TezosCrypto
+options:
+  bundleIdPrefix: com.keefertaylor
+settings:
+  LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/iOS"
+targets:
+  TezosCrypto:
+    type: framework
+    platform: [iOS, macOS]
+    sources: [TezosCrypto]
+    scheme:
+      testTargets:
+        - TezosCryptoTests_$platform
+      gatherCoverageData: true
+    postCompileScripts:
+      - script: swiftlint autocorrect --config .swiftlint.yml
+        name: SwiftLint
+    dependencies:
+      - carthage: BigInt
+      - carthage: SipHash
+  TezosCryptoTests:
+    type: bundle.unit-test
+    platform: [iOS, macOS]
+    sources: [TezosCryptoTests]
+    dependencies:
+      - target: TezosCrypto_$platform

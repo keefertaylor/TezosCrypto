@@ -1,4 +1,4 @@
-# TezosCrypto 
+# TezosCrypto
 
 [![Build Status](https://travis-ci.org/keefertaylor/TezosCrypto.svg?branch=master)](https://travis-ci.org/keefertaylor/TezosCrypto)
 [![codecov](https://codecov.io/gh/keefertaylor/TezosCrypto/branch/master/graph/badge.svg)](https://codecov.io/gh/keefertaylor/TezosCrypto)
@@ -47,6 +47,13 @@ $ brew update && brew install libsodium
 ## Contributing
 
 Please do.
+
+To get set up:
+```shell
+$ brew install xcodegen # if you don't already have it
+$ xcodegen generate # Generate an XCode project from Project.yml
+$ open TezosCrypto.xcodeproj 
+```
 
 ## License
 
