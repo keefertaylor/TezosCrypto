@@ -10,9 +10,9 @@ before_install:
 - brew update
 - brew outdated carthage || brew upgrade carthage
 - brew outdated cocoapods || brew upgrade cocoapods
+- pod repo update
 - rm Cartfile.resolved
 - rm -rf Carthage/
-- brew outdated carthage || brew upgrade carthage
 before_deploy:
 - travis_wait 120 carthage build --no-skip-current --platform iOS --cache-builds
 - carthage archive $FRAMEWORK_NAME
