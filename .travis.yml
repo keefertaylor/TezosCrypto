@@ -10,6 +10,7 @@ before_install:
 - brew update
 - brew outdated carthage || brew upgrade carthage
 - brew outdated cocoapods || brew upgrade cocoapods
+- brew install xcodegen
 - pod repo update
 - rm Cartfile.resolved
 - rm -rf Carthage/
@@ -20,8 +21,11 @@ after_deploy:
 - travis_wait 120 pod trunk push --skip-import-validation --skip-tests --allow-warnings
 script:
 # CocoaPods
+- xcodegen generate
 - travis_wait 120 pod lib lint
+- rm -rf TezosCrypto.xcodeproj
 # Carthage
+- xcodegen generate
 - travis_wait 120 carthage bootstrap --platform iOS --no-use-binaries
 - set -o pipefail && xcodebuild test -scheme TezosCrypto -destination 'platform=iOS
   Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
