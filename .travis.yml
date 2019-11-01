@@ -21,7 +21,7 @@ jobs:
       script:
         - xcodegen generate
         - travis_wait 500 carthage bootstrap --platform iOS --no-use-binaries
-        - set -o pipefail && xcodebuild test -scheme TezosCrypto -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
+        - set -o pipefail && xcodebuild test -scheme TezosCrypto_iOS -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
         - slather
         - bash <(curl -s https://codecov.io/bash)
     - stage: Build CocoaPods
