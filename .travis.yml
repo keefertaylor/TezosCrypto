@@ -10,6 +10,7 @@ install:
 - brew update
 - brew outdated carthage || brew upgrade carthage
 - brew outdated cocoapods || brew upgrade cocoapods
+- brew install xcodegen
 - pod repo update
 - rm Cartfile.resolved
 - rm -rf Carthage/
@@ -18,29 +19,10 @@ jobs:
   include:
     - stage: Build Carthage
       script:
+        - xcodegen generate
         - travis_wait 500 carthage bootstrap --platform iOS --no-use-binaries
-        - set -o pipefail && xcodebuild test -scheme TezosCrypto -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
+        - set -o pipefail && xcodebuild test -scheme TezosCrypto_iOS -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.2' ONLY_ACTIVE_ARCH=YES | xcpretty
+        - slather
+        - bash <(curl -s https://codecov.io/bash)
     - stage: Build CocoaPods
       script: travis_wait 500 pod lib lint
-
-# before_install:
-# before_deploy:
-# - travis_wait 500 carthage build --no-skip-current --platform iOS --cache-builds
-# - carthage archive $FRAMEWORK_NAME
-# after_deploy:
-# - travis_wait 500 pod trunk push --skip-import-validation --skip-tests --allow-warnings
-# script:
-# # CocoaPods
-# # Carthage
-# after_success:
-# - slather
-# - bash <(curl -s https://codecov.io/bash)
-# deploy:
-#   provider: releases
-#   api_key:
-#     secure: 0W9EdUlK8nDrSU4rEv7lhobC+lwrCqiu69eLgFUbB8DofPZde4/ORhDVi3Wcd484nkZxn6Pb3U8u4bhz4Zgv965eaWEFIPExZ+jTUe/qkMhCYfq1n8WQwAuh6OJhZ2hfA022/rl80cLZruxPQlVgQW3Jx3L9EuTy4sDntB2ZyM6SMb21qOEHTp+PWyiudYLgBnGc3XsuuFQ1tQg8yAQRk4jrZrWZJttCYUfeuLyPaO58anHUtCLvySmmIz1KHUkOkWgKcs/xMusz9BY0xLURyFbOoZNxhunyCyiFik9iExtmrsCluURvn/CknSggSh6t8MWk8yXdgXfTYdARnb7AStnkybbfVVYLOcuy8+jfFneF94M5dVCmlSWyy1hetZJjl7Vs8M3WSxKlYlSjomj2aSAVfasGqTHRFvcsSfIoRmbqn8zRsYRieI1OX1J9AtSzLT7VwVi3/B5xkbuMrbAtbXtRyn6+akNy7EUPi/nEEZgGTbOkLd/sSu4hCueCjPDPsexwOMkm6ADIxGjyH4eA6/Pu3wZHCpgoM8DrYhrdOcTeQ5cAJN/AIX3b5VnWTAXcDSbWDtrBo0rwzNsG7t15SpqY5coNg8DHJorlY0z1Fe4CmwkqtvWX+C2RQLzxdB5bPFjTG7apcZl74ZweLF/mW2+rPOZvIepK8duAxgT8pfM=
-#   file: "$FRAMEWORK_NAME.framework.zip"
-#   skip_cleanup: true
-#   on:
-#     repo: keefertaylor/TezosCrypto
-#     tags: true
