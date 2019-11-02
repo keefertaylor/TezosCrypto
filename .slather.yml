@@ -2,4 +2,4 @@
 
 coverage_service: cobertura_xml
 xcodeproj: TezosCrypto.xcodeproj
-scheme: TezosCryptoTests_iOS
+scheme: TezosCrypto_iOS
