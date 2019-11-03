@@ -12,8 +12,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "10.0"
   s.osx.deployment_target = "10.14"
 
-  s.prepare_command = "xcodegen generate -s project.yml"
-
   s.dependency "Base58Swift", "~> 2.1.0"
   s.dependency "BigInt", "~> 3.1"
   s.dependency "CryptoSwift", "~> 0.14.0"
