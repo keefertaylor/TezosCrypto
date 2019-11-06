@@ -8,6 +8,8 @@ targets:
     type: framework
     platform: [iOS, macOS]
     sources: [TezosCrypto]
+    deploymentTarget:
+      iOS: 10.0
     scheme:
       testTargets:
         - TezosCryptoTests_$platform
