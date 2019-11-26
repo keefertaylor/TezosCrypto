@@ -1,0 +1,869 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		058F47C89191BA3FE0DFC912 /* Base58Swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06A848BA099C77D032C89B80 /* Base58Swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0C7891260F411DD0DDC4EE9F /* Prefixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47819A5BEA5E3C77CCC53AD8 /* Prefixes.swift */; };
+		0D091670B30AE06A33ECF1EA /* TezosCryptoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5191B97CCE03D157BCB98A7 /* TezosCryptoUtils.swift */; };
+		0EE8CF95F1038DCF08246A68 /* TezosCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 294A55C68E519F87F78B4623 /* TezosCrypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		10FD7D2FCC5592CDC37DBA3D /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BEC7ECD825F706377B701D /* Sodium.framework */; };
+		1183B5ABB83397350776F9AE /* PublicKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B17EBB0AAD118E7A9DB98 /* PublicKeyTests.swift */; };
+		13AB7CDFD6F0E3DDAF472295 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 182CC1C9B61C4754A9C6286F /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		19EE2BAD3EAA22E8DB5690B7 /* EllipticalCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EA17F5193676B7B90B44AE /* EllipticalCurve.swift */; };
+		1E537330755C8831FC7AC0F7 /* Sodium.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C70ABC2100D4FC54F94D20A9 /* Sodium.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20B74BF46AB1685751CF548A /* Sodium.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 57BEC7ECD825F706377B701D /* Sodium.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		23FAA63CEE3572A32FB7E843 /* Sodium+TezosCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E1DFAFA2063B8FCD5F4BA8 /* Sodium+TezosCrypto.swift */; };
+		270E569E544E8EEF46009AF2 /* Base58+TezosCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD7919263878DAFE8F690A4 /* Base58+TezosCrypto.swift */; };
+		271ED0326B2C20DA787EE443 /* MnemonicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C16F17B7E48948206D0A32A /* MnemonicKit.framework */; };
+		2F93CE4C11AC5272041F3F6F /* MnemonicKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F54EDD297F2A5960FF44465B /* MnemonicKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		33409665B37D841BF6F2F113 /* KeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A147B9630160CA62C48CD /* KeyPair.swift */; };
+		374743767F61FF6086838C4E /* Prefixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47819A5BEA5E3C77CCC53AD8 /* Prefixes.swift */; };
+		3DDCB7C76CAD94577E0CC6C5 /* SecretKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3070411FAE5EEB895FE18778 /* SecretKeyTests.swift */; };
+		3DF44878E3D8F9BD301970AB /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AAE638122EB57EDB2DEF0F99 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3F97D51A75A75D6D5CC01B40 /* MnemonicKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C16F17B7E48948206D0A32A /* MnemonicKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		408A5473BC0FC0AF93E5EA9E /* TezosCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F589AE12B6DBBA502009FF0F /* TezosCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		443ED90C79645AD45E156A6C /* TestObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81147AE8ADA2A45D18A12223 /* TestObjects.swift */; };
+		49873382CBCA16E3E0766E02 /* BigInt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1F4F685C93AFAA10D5D0B1E /* BigInt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5072681BA9BFE25AA529D3A9 /* TezosCryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B40432A67464335F3C5135E /* TezosCryptoTests.swift */; };
+		56BFADAC463CA6C6DFD7AE45 /* Base58Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3D1423730D1415B36D7C03 /* Base58Swift.framework */; };
+		5B66EABBD2E74E474EEB07C5 /* Base58Swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DB3D1423730D1415B36D7C03 /* Base58Swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		634D437255BE5B5F56C6C70D /* EllipticalCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EA17F5193676B7B90B44AE /* EllipticalCurve.swift */; };
+		702D0316B55AACB456B68CF1 /* Base58+TezosCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD7919263878DAFE8F690A4 /* Base58+TezosCrypto.swift */; };
+		745904F0ECF3BED609FE6592 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F137C46BEE071DE4549C2F /* PublicKey.swift */; };
+		75D2B801F8AF28687E717752 /* TezosCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AE12B6DBBA502009FF0F /* TezosCrypto.framework */; };
+		7E2B8EE4707E2AA42583EC1B /* TezosCryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B40432A67464335F3C5135E /* TezosCryptoTests.swift */; };
+		7E33BA030DEC16F0861B6371 /* PublicKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B17EBB0AAD118E7A9DB98 /* PublicKeyTests.swift */; };
+		848883DE5A4EA4CC8B9EE65E /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70ABC2100D4FC54F94D20A9 /* Sodium.framework */; };
+		86DEAF5E423BE2D28A039FDB /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F137C46BEE071DE4549C2F /* PublicKey.swift */; };
+		8742AF38A44E12D09137D8D3 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182CC1C9B61C4754A9C6286F /* CryptoSwift.framework */; };
+		8A08BB6C72D7864C6F2903E4 /* BigInt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C80DFE2751503E6B6C78F9D /* BigInt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		90D7374E4F0F8D32AC9E6EB9 /* TestObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81147AE8ADA2A45D18A12223 /* TestObjects.swift */; };
+		925ABEF4F4D0280B9B470AAC /* TezosCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 294A55C68E519F87F78B4623 /* TezosCrypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96C5CA6CFD33711FD6ED9B0F /* MnemonicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54EDD297F2A5960FF44465B /* MnemonicKit.framework */; };
+		9F908162A8103B0C0D286C23 /* Sodium+TezosCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E1DFAFA2063B8FCD5F4BA8 /* Sodium+TezosCrypto.swift */; };
+		A1EF52234D70C9794FD34F77 /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C80DFE2751503E6B6C78F9D /* BigInt.framework */; };
+		AEB4014CCA6C8DC8A57C44DE /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CAB58AC419FB1F265B68C /* SecretKey.swift */; };
+		B9CDDABA39702EC2D5F1EDD6 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CAB58AC419FB1F265B68C /* SecretKey.swift */; };
+		C24B59731D1987B78BC52070 /* Base58Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A848BA099C77D032C89B80 /* Base58Swift.framework */; };
+		C3F47D6AA514AECA149FC7E5 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE638122EB57EDB2DEF0F99 /* CryptoSwift.framework */; };
+		C7DF079C1789117EFF3AC97D /* TezosCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BE3340654B809707A44682 /* TezosCrypto.framework */; };
+		CB9A9488CAE3E903B74FE9B9 /* TezosCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8BE3340654B809707A44682 /* TezosCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CC6CA00273116CEF5D301ACA /* SecretKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3070411FAE5EEB895FE18778 /* SecretKeyTests.swift */; };
+		D7445F99066C21DA403E132E /* TezosCryptoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5191B97CCE03D157BCB98A7 /* TezosCryptoUtils.swift */; };
+		F82CF2B6EC8C754EEE99525E /* KeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A147B9630160CA62C48CD /* KeyPair.swift */; };
+		FC7FA1F3263940987B49D11C /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F4F685C93AFAA10D5D0B1E /* BigInt.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		33D113163596AE6C4ABDF9D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0254C556448EC2C5E401BE0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2895CB4F2391CF00B1F6AA95;
+			remoteInfo = TezosCrypto_iOS;
+		};
+		687096D206F01375F8CF4411 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0254C556448EC2C5E401BE0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55781CEB66B06F8EDC76B2AF;
+			remoteInfo = TezosCrypto_macOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		439A00EBE6AAA25897977F1F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				408A5473BC0FC0AF93E5EA9E /* TezosCrypto.framework in Embed Frameworks */,
+				058F47C89191BA3FE0DFC912 /* Base58Swift.framework in Embed Frameworks */,
+				8A08BB6C72D7864C6F2903E4 /* BigInt.framework in Embed Frameworks */,
+				3DF44878E3D8F9BD301970AB /* CryptoSwift.framework in Embed Frameworks */,
+				3F97D51A75A75D6D5CC01B40 /* MnemonicKit.framework in Embed Frameworks */,
+				1E537330755C8831FC7AC0F7 /* Sodium.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3122A22937A10BF70A4E1FD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CB9A9488CAE3E903B74FE9B9 /* TezosCrypto.framework in Embed Frameworks */,
+				5B66EABBD2E74E474EEB07C5 /* Base58Swift.framework in Embed Frameworks */,
+				49873382CBCA16E3E0766E02 /* BigInt.framework in Embed Frameworks */,
+				13AB7CDFD6F0E3DDAF472295 /* CryptoSwift.framework in Embed Frameworks */,
+				2F93CE4C11AC5272041F3F6F /* MnemonicKit.framework in Embed Frameworks */,
+				20B74BF46AB1685751CF548A /* Sodium.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		06A848BA099C77D032C89B80 /* Base58Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Base58Swift.framework; sourceTree = "<group>"; };
+		1809EF559CDE59347FBF7C8C /* TezosCryptoTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TezosCryptoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		182CC1C9B61C4754A9C6286F /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = "<group>"; };
+		294A55C68E519F87F78B4623 /* TezosCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TezosCrypto.h; sourceTree = "<group>"; };
+		2B40432A67464335F3C5135E /* TezosCryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TezosCryptoTests.swift; sourceTree = "<group>"; };
+		3070411FAE5EEB895FE18778 /* SecretKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeyTests.swift; sourceTree = "<group>"; };
+		47819A5BEA5E3C77CCC53AD8 /* Prefixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefixes.swift; sourceTree = "<group>"; };
+		4C16F17B7E48948206D0A32A /* MnemonicKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MnemonicKit.framework; sourceTree = "<group>"; };
+		52F137C46BEE071DE4549C2F /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
+		5582C67B7BA5AB0935C6F028 /* TezosCryptoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TezosCryptoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		57BEC7ECD825F706377B701D /* Sodium.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sodium.framework; sourceTree = "<group>"; };
+		5C80DFE2751503E6B6C78F9D /* BigInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BigInt.framework; sourceTree = "<group>"; };
+		781F65045570B2BDCEA8935F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81147AE8ADA2A45D18A12223 /* TestObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestObjects.swift; sourceTree = "<group>"; };
+		95E1DFAFA2063B8FCD5F4BA8 /* Sodium+TezosCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sodium+TezosCrypto.swift"; sourceTree = "<group>"; };
+		968A147B9630160CA62C48CD /* KeyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPair.swift; sourceTree = "<group>"; };
+		A8BE3340654B809707A44682 /* TezosCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TezosCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAE638122EB57EDB2DEF0F99 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = "<group>"; };
+		C55B17EBB0AAD118E7A9DB98 /* PublicKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKeyTests.swift; sourceTree = "<group>"; };
+		C70ABC2100D4FC54F94D20A9 /* Sodium.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sodium.framework; sourceTree = "<group>"; };
+		D5191B97CCE03D157BCB98A7 /* TezosCryptoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TezosCryptoUtils.swift; sourceTree = "<group>"; };
+		D55CAB58AC419FB1F265B68C /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
+		DB3D1423730D1415B36D7C03 /* Base58Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Base58Swift.framework; sourceTree = "<group>"; };
+		DCD7919263878DAFE8F690A4 /* Base58+TezosCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Base58+TezosCrypto.swift"; sourceTree = "<group>"; };
+		E1F4F685C93AFAA10D5D0B1E /* BigInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BigInt.framework; sourceTree = "<group>"; };
+		F54EDD297F2A5960FF44465B /* MnemonicKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MnemonicKit.framework; sourceTree = "<group>"; };
+		F589AE12B6DBBA502009FF0F /* TezosCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TezosCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8EA17F5193676B7B90B44AE /* EllipticalCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipticalCurve.swift; sourceTree = "<group>"; };
+		FA28CB7094C0715EE5A9A22A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C8DEC536626F94513A873D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10FD7D2FCC5592CDC37DBA3D /* Sodium.framework in Frameworks */,
+				FC7FA1F3263940987B49D11C /* BigInt.framework in Frameworks */,
+				8742AF38A44E12D09137D8D3 /* CryptoSwift.framework in Frameworks */,
+				56BFADAC463CA6C6DFD7AE45 /* Base58Swift.framework in Frameworks */,
+				96C5CA6CFD33711FD6ED9B0F /* MnemonicKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DDC41D13FCFE25C40BCFF6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7DF079C1789117EFF3AC97D /* TezosCrypto.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B139E544F106B1A71E6B88DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				848883DE5A4EA4CC8B9EE65E /* Sodium.framework in Frameworks */,
+				A1EF52234D70C9794FD34F77 /* BigInt.framework in Frameworks */,
+				C3F47D6AA514AECA149FC7E5 /* CryptoSwift.framework in Frameworks */,
+				C24B59731D1987B78BC52070 /* Base58Swift.framework in Frameworks */,
+				271ED0326B2C20DA787EE443 /* MnemonicKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9BF400247C95D237C346607 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75D2B801F8AF28687E717752 /* TezosCrypto.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0598C10BCE39702AA6DAEF5A /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				06A848BA099C77D032C89B80 /* Base58Swift.framework */,
+				5C80DFE2751503E6B6C78F9D /* BigInt.framework */,
+				AAE638122EB57EDB2DEF0F99 /* CryptoSwift.framework */,
+				4C16F17B7E48948206D0A32A /* MnemonicKit.framework */,
+				C70ABC2100D4FC54F94D20A9 /* Sodium.framework */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		0E1E3AFC50A0A58650FC4321 /* TezosCryptoTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA28CB7094C0715EE5A9A22A /* Info.plist */,
+				C55B17EBB0AAD118E7A9DB98 /* PublicKeyTests.swift */,
+				3070411FAE5EEB895FE18778 /* SecretKeyTests.swift */,
+				81147AE8ADA2A45D18A12223 /* TestObjects.swift */,
+				2B40432A67464335F3C5135E /* TezosCryptoTests.swift */,
+			);
+			path = TezosCryptoTests;
+			sourceTree = "<group>";
+		};
+		503BA0CC06464384CA564CD2 /* Carthage */ = {
+			isa = PBXGroup;
+			children = (
+				F1E029FB73F61764585FBA18 /* iOS */,
+				0598C10BCE39702AA6DAEF5A /* Mac */,
+			);
+			name = Carthage;
+			path = Carthage/Build;
+			sourceTree = "<group>";
+		};
+		824BDCA07380E9AE327F79DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8BE3340654B809707A44682 /* TezosCrypto.framework */,
+				F589AE12B6DBBA502009FF0F /* TezosCrypto.framework */,
+				1809EF559CDE59347FBF7C8C /* TezosCryptoTests.xctest */,
+				5582C67B7BA5AB0935C6F028 /* TezosCryptoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		88E241D9F98D94643EC12089 /* TezosCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				DCD7919263878DAFE8F690A4 /* Base58+TezosCrypto.swift */,
+				F8EA17F5193676B7B90B44AE /* EllipticalCurve.swift */,
+				781F65045570B2BDCEA8935F /* Info.plist */,
+				968A147B9630160CA62C48CD /* KeyPair.swift */,
+				47819A5BEA5E3C77CCC53AD8 /* Prefixes.swift */,
+				52F137C46BEE071DE4549C2F /* PublicKey.swift */,
+				D55CAB58AC419FB1F265B68C /* SecretKey.swift */,
+				95E1DFAFA2063B8FCD5F4BA8 /* Sodium+TezosCrypto.swift */,
+				294A55C68E519F87F78B4623 /* TezosCrypto.h */,
+				D5191B97CCE03D157BCB98A7 /* TezosCryptoUtils.swift */,
+			);
+			path = TezosCrypto;
+			sourceTree = "<group>";
+		};
+		9B2504D722E74585407A442B = {
+			isa = PBXGroup;
+			children = (
+				88E241D9F98D94643EC12089 /* TezosCrypto */,
+				0E1E3AFC50A0A58650FC4321 /* TezosCryptoTests */,
+				C0E7608945790348786D42E3 /* Frameworks */,
+				824BDCA07380E9AE327F79DD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C0E7608945790348786D42E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				503BA0CC06464384CA564CD2 /* Carthage */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1E029FB73F61764585FBA18 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				DB3D1423730D1415B36D7C03 /* Base58Swift.framework */,
+				E1F4F685C93AFAA10D5D0B1E /* BigInt.framework */,
+				182CC1C9B61C4754A9C6286F /* CryptoSwift.framework */,
+				F54EDD297F2A5960FF44465B /* MnemonicKit.framework */,
+				57BEC7ECD825F706377B701D /* Sodium.framework */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		35860FBC6DA1A6F130932A3D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				925ABEF4F4D0280B9B470AAC /* TezosCrypto.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5C6BF31A7D8FE0F39C3BD3D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EE8CF95F1038DCF08246A68 /* TezosCrypto.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2895CB4F2391CF00B1F6AA95 /* TezosCrypto_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B333D898635A8A8271D4EBBE /* Build configuration list for PBXNativeTarget "TezosCrypto_iOS" */;
+			buildPhases = (
+				35860FBC6DA1A6F130932A3D /* Headers */,
+				C254A726FD06C744D9FEB6C9 /* Sources */,
+				A488943424DA3740D276F9CC /* SwiftLint */,
+				9C8DEC536626F94513A873D5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TezosCrypto_iOS;
+			productName = TezosCrypto_iOS;
+			productReference = A8BE3340654B809707A44682 /* TezosCrypto.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3D7B9195DBA2555AB291D645 /* TezosCryptoTests_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD2B46969E484D05218ED453 /* Build configuration list for PBXNativeTarget "TezosCryptoTests_iOS" */;
+			buildPhases = (
+				091BB50F54B2F394A0E74543 /* Sources */,
+				9DDC41D13FCFE25C40BCFF6A /* Frameworks */,
+				A3122A22937A10BF70A4E1FD /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				939D87FF2693C301F85EB73E /* PBXTargetDependency */,
+			);
+			name = TezosCryptoTests_iOS;
+			productName = TezosCryptoTests_iOS;
+			productReference = 1809EF559CDE59347FBF7C8C /* TezosCryptoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		489D10704B05613DB49D8127 /* TezosCryptoTests_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E39B41BDB2AB5832B52E24B8 /* Build configuration list for PBXNativeTarget "TezosCryptoTests_macOS" */;
+			buildPhases = (
+				66AC628019B2BF4F146F0A0A /* Sources */,
+				F9BF400247C95D237C346607 /* Frameworks */,
+				439A00EBE6AAA25897977F1F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0930C9D7D0EB7C3A1CB22435 /* PBXTargetDependency */,
+			);
+			name = TezosCryptoTests_macOS;
+			productName = TezosCryptoTests_macOS;
+			productReference = 5582C67B7BA5AB0935C6F028 /* TezosCryptoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		55781CEB66B06F8EDC76B2AF /* TezosCrypto_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4443AF9AA0E8E2C703C6562 /* Build configuration list for PBXNativeTarget "TezosCrypto_macOS" */;
+			buildPhases = (
+				C5C6BF31A7D8FE0F39C3BD3D /* Headers */,
+				168026E954164CDBAF1B1A26 /* Sources */,
+				E08B448FE7ED7659EC2A13BE /* SwiftLint */,
+				B139E544F106B1A71E6B88DE /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TezosCrypto_macOS;
+			productName = TezosCrypto_macOS;
+			productReference = F589AE12B6DBBA502009FF0F /* TezosCrypto.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0254C556448EC2C5E401BE0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+			};
+			buildConfigurationList = FEDF5DB0D1FE0CD86A959EA0 /* Build configuration list for PBXProject "TezosCrypto" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 9B2504D722E74585407A442B;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D7B9195DBA2555AB291D645 /* TezosCryptoTests_iOS */,
+				489D10704B05613DB49D8127 /* TezosCryptoTests_macOS */,
+				2895CB4F2391CF00B1F6AA95 /* TezosCrypto_iOS */,
+				55781CEB66B06F8EDC76B2AF /* TezosCrypto_macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A488943424DA3740D276F9CC /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "swiftlint autocorrect --config .swiftlint.yml";
+		};
+		E08B448FE7ED7659EC2A13BE /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "swiftlint autocorrect --config .swiftlint.yml";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		091BB50F54B2F394A0E74543 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1183B5ABB83397350776F9AE /* PublicKeyTests.swift in Sources */,
+				3DDCB7C76CAD94577E0CC6C5 /* SecretKeyTests.swift in Sources */,
+				443ED90C79645AD45E156A6C /* TestObjects.swift in Sources */,
+				7E2B8EE4707E2AA42583EC1B /* TezosCryptoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		168026E954164CDBAF1B1A26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				270E569E544E8EEF46009AF2 /* Base58+TezosCrypto.swift in Sources */,
+				634D437255BE5B5F56C6C70D /* EllipticalCurve.swift in Sources */,
+				F82CF2B6EC8C754EEE99525E /* KeyPair.swift in Sources */,
+				0C7891260F411DD0DDC4EE9F /* Prefixes.swift in Sources */,
+				745904F0ECF3BED609FE6592 /* PublicKey.swift in Sources */,
+				AEB4014CCA6C8DC8A57C44DE /* SecretKey.swift in Sources */,
+				23FAA63CEE3572A32FB7E843 /* Sodium+TezosCrypto.swift in Sources */,
+				0D091670B30AE06A33ECF1EA /* TezosCryptoUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66AC628019B2BF4F146F0A0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E33BA030DEC16F0861B6371 /* PublicKeyTests.swift in Sources */,
+				CC6CA00273116CEF5D301ACA /* SecretKeyTests.swift in Sources */,
+				90D7374E4F0F8D32AC9E6EB9 /* TestObjects.swift in Sources */,
+				5072681BA9BFE25AA529D3A9 /* TezosCryptoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C254A726FD06C744D9FEB6C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				702D0316B55AACB456B68CF1 /* Base58+TezosCrypto.swift in Sources */,
+				19EE2BAD3EAA22E8DB5690B7 /* EllipticalCurve.swift in Sources */,
+				33409665B37D841BF6F2F113 /* KeyPair.swift in Sources */,
+				374743767F61FF6086838C4E /* Prefixes.swift in Sources */,
+				86DEAF5E423BE2D28A039FDB /* PublicKey.swift in Sources */,
+				B9CDDABA39702EC2D5F1EDD6 /* SecretKey.swift in Sources */,
+				9F908162A8103B0C0D286C23 /* Sodium+TezosCrypto.swift in Sources */,
+				D7445F99066C21DA403E132E /* TezosCryptoUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0930C9D7D0EB7C3A1CB22435 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55781CEB66B06F8EDC76B2AF /* TezosCrypto_macOS */;
+			targetProxy = 687096D206F01375F8CF4411 /* PBXContainerItemProxy */;
+		};
+		939D87FF2693C301F85EB73E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2895CB4F2391CF00B1F6AA95 /* TezosCrypto_iOS */;
+			targetProxy = 33D113163596AE6C4ABDF9D2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		10EE211CA03571165CDF4765 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = TezosCrypto/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.TezosCrypto-macOS";
+				PRODUCT_NAME = TezosCrypto;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		2CDF88044F28C22A66772727 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = TezosCryptoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.TezosCryptoTests-macOS";
+				PRODUCT_NAME = TezosCryptoTests;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		458F94835429DECB2669F7E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TezosCryptoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.TezosCryptoTests-iOS";
+				PRODUCT_NAME = TezosCryptoTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		47371253831EFEE32DAEE12B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TezosCrypto/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.TezosCrypto-iOS";
+				PRODUCT_NAME = TezosCrypto;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		627C89CDF92D6FECEA02C3E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TezosCrypto/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.TezosCrypto-iOS";
+				PRODUCT_NAME = TezosCrypto;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		A19C7BBCCCFDEBCC667FCE1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = TezosCryptoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.TezosCryptoTests-macOS";
+				PRODUCT_NAME = TezosCryptoTests;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A278F3157AA64BDEEB0FC1BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/iOS";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A884E65588E87A4E3FEBE98B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TezosCryptoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.TezosCryptoTests-iOS";
+				PRODUCT_NAME = TezosCryptoTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C458F3FCF7CC4B04BD078C7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F0E3798DF7F043DFCDBD912E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = TezosCrypto/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.TezosCrypto-macOS";
+				PRODUCT_NAME = TezosCrypto;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B333D898635A8A8271D4EBBE /* Build configuration list for PBXNativeTarget "TezosCrypto_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				627C89CDF92D6FECEA02C3E7 /* Debug */,
+				47371253831EFEE32DAEE12B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+		C4443AF9AA0E8E2C703C6562 /* Build configuration list for PBXNativeTarget "TezosCrypto_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10EE211CA03571165CDF4765 /* Debug */,
+				F0E3798DF7F043DFCDBD912E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+		E39B41BDB2AB5832B52E24B8 /* Build configuration list for PBXNativeTarget "TezosCryptoTests_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A19C7BBCCCFDEBCC667FCE1A /* Debug */,
+				2CDF88044F28C22A66772727 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+		FD2B46969E484D05218ED453 /* Build configuration list for PBXNativeTarget "TezosCryptoTests_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				458F94835429DECB2669F7E0 /* Debug */,
+				A884E65588E87A4E3FEBE98B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+		FEDF5DB0D1FE0CD86A959EA0 /* Build configuration list for PBXProject "TezosCrypto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A278F3157AA64BDEEB0FC1BD /* Debug */,
+				C458F3FCF7CC4B04BD078C7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0254C556448EC2C5E401BE0F /* Project object */;
+}
