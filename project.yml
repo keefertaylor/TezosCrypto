@@ -16,7 +16,7 @@ targets:
       - script: swiftlint autocorrect --config .swiftlint.yml
         name: SwiftLint
     dependencies:
-      - carthage: swift-sodium
+      - carthage: Sodium
       - carthage: BigInt
       - carthage: CryptoSwift
       - carthage: Base58Swift
