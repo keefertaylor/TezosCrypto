@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
   s.name         = "TezosCrypto"
-  s.version      = "2.1.2"
+  s.version      = "2.1.3"
   s.summary      = "TezosCrypto implements cryptography functions for the Tezos Blockchain."
 
   s.homepage     = "https://github.com/keefertaylor/TezosCrypto"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Keefer Taylor" => "keefer@keefertaylor.com" }
-  s.source       = { :git => "https://github.com/keefertaylor/TezosCrypto.git", :tag => "2.1.2" }
+  s.source       = { :git => "https://github.com/keefertaylor/TezosCrypto.git", :tag => "2.1.3" }
   s.source_files  = "TezosCrypto/*.swift", "Base58String/*.swift"
   s.swift_version = "4.2"
   s.ios.deployment_target = "10.0"
