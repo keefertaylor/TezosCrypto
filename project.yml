@@ -21,6 +21,7 @@ targets:
       - carthage: CryptoSwift
       - carthage: Base58Swift
       - carthage: MnemonicKit
+      - carthage: SipHash
   TezosCryptoTests:
     type: bundle.unit-test
     platform: [iOS, macOS]
