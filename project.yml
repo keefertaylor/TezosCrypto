@@ -18,7 +18,11 @@ targets:
       - script: swiftlint autocorrect --config .swiftlint.yml
         name: SwiftLint
     dependencies:
+      - carthage: Sodium
       - carthage: BigInt
+      - carthage: CryptoSwift
+      - carthage: Base58Swift
+      - carthage: MnemonicKit
       - carthage: SipHash
   TezosCryptoTests:
     type: bundle.unit-test
