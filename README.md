@@ -1,3 +1,7 @@
+# ***NOTE:***
+Forward development of this library has moved to [TezosKit's Crypto folder](https://github.com/keefertaylor/TezosKit/tree/master/TezosKit/Crypto). 
+
+
 # TezosCrypto
 
 [![Build Status](https://travis-ci.org/keefertaylor/TezosCrypto.svg?branch=master)](https://travis-ci.org/keefertaylor/TezosCrypto)
